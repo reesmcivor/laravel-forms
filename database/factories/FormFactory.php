@@ -13,7 +13,6 @@ class ExampleModelFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            // Add more fields as needed
         ];
     }
 }
