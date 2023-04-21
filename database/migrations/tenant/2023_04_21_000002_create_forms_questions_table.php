@@ -10,7 +10,8 @@ return new class extends Migration
     {
         Schema::create('form_questions', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
+            $table->foreignIdFor(\ReesMcIvor\Forms\Models\Question::class);
+            $table->foreignIdFor(\ReesMcIvor\Forms\Models\Form::class);
             $table->timestamps();
         });
     }
