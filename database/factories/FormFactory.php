@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ExampleModelFactory extends Factory
 {
-    protected $model = ExampleModel::class;
+    protected $model = Form::class;
 
     public function definition()
     {
