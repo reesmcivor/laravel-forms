@@ -11,7 +11,8 @@ class FormTest extends TenantTestCase {
     #[Test]
     public function a_form_can_be_created()
     {
-        Form::factory()->create();
+        $form = Form::factory()->create();
+        $this->assertDatabaseHas('forms', $form->toArray());
     }
 
 }
