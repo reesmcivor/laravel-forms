@@ -12,7 +12,7 @@ class FormsPackageServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../database/migrations/tenant' => database_path('migrations/tenant'),
                 __DIR__ . '/../publish/tests' => base_path('tests/Forms'),
-            ], 'reesmcivor-forms-tests');
+            ], 'reesmcivor-forms');
         }
     }
 
