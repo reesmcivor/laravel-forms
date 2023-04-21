@@ -14,4 +14,9 @@ class Question extends Model
     {
         return QuestionFactory::new();
     }
+
+    public function form()
+    {
+        return $this->belongsTo(Form::class);
+    }
 }
