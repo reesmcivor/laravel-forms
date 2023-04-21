@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('form_questions', function (Blueprint $table) {
+        Schema::create('forms_questions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
             $table->timestamps();
