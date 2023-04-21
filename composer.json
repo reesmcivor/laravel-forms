@@ -1,0 +1,33 @@
+{
+    "name": "reesmcivor/forms",
+    "description": "Laravel flexible forms",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rees McIvor",
+            "email": "reesmcivor@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ReesMcIvor\\Forms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ReesMcIvor\\Forms\\FormsPackageServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
