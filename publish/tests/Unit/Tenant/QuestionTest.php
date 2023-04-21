@@ -16,7 +16,7 @@ class QuestionTest extends TenantTestCase {
             Form::factory()->create()
         );
 
-        $this->assertCount(1, Form::get()->first() );
+        $this->assertCount(1, Form::get() );
         $this->assertCount(1, Question::get()->first()->forms );
     }
 
