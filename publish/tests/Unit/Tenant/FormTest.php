@@ -3,6 +3,7 @@
 namespace Tests\Forms\Unit\Tenant;
 
 use PHPUnit\Framework\Attributes\Test;
+use ReesMcIvor\Forms\Models\Form;
 use Tests\TenantTestCase;
 
 class FormTest extends TenantTestCase {
