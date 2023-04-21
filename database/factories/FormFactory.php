@@ -2,7 +2,7 @@
 
 namespace ReesMcIvor\Forms\Database\Factories;
 
-use YourVendorName\MyLaravelPackage\ExampleModel;
+use ReesMcIvor\Forms\Models\Form;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ExampleModelFactory extends Factory
