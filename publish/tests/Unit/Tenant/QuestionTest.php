@@ -12,10 +12,12 @@ class QuestionTest extends TenantTestCase {
     #[Test]
     public function a_form_can_have_a_given_question()
     {
-        $form = Form::factory()->create();
-        Question::factory()->create()->forms->attach($form->id);
+        Question::factory()->create()->forms()->attach(
+            Form::factory()->create()
+        );
 
-        $this->assertDatabaseHas('forms', $form->toArray());
+        $this->assertCount(1, Form::get()->first() );
+        $this->assertCount(1, Question::get()->first()->forms );
     }
 
 }
