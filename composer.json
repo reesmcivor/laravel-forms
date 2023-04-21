@@ -15,7 +15,8 @@
     },
     "autoload": {
         "psr-4": {
-            "ReesMcIvor\\Forms\\": "src/"
+            "ReesMcIvor\\Forms\\": "src/",
+            "ReesMcIvor\\Forms\\Database\\Factories\\": "database/factories/"
         }
     },
     "extra": {
