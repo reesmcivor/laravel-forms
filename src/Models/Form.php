@@ -14,4 +14,9 @@ class Form extends Model
     {
         return FormFactory::new();
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

@@ -4,14 +4,14 @@ namespace ReesMcIvor\Forms\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ReesMcIvor\Forms\Database\Factories\FormQuestionFactory;
+use ReesMcIvor\Forms\Database\Factories\QuestionFactory;
 
-class FormQuestion extends Model
+class Question extends Model
 {
     use HasFactory;
 
     protected static function newFactory()
     {
-        return FormQuestionFactory::new();
+        return QuestionFactory::new();
     }
 }

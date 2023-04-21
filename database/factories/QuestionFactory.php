@@ -4,11 +4,11 @@ namespace ReesMcIvor\Forms\Database\Factories;
 
 use ReesMcIvor\Forms\Models\Form;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use ReesMcIvor\Forms\Models\FormQuestion;
+use ReesMcIvor\Forms\Models\Question;
 
-class FormQuestionFactory extends Factory
+class QuestionFactory extends Factory
 {
-    protected $model = FormQuestion::class;
+    protected $model = Question::class;
 
     public function definition()
     {
