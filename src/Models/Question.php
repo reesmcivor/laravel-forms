@@ -15,8 +15,8 @@ class Question extends Model
         return QuestionFactory::new();
     }
 
-    public function form()
+    public function forms()
     {
-        return $this->belongsTo(Form::class);
+        return $this->hasMany(Form::class);
     }
 }
