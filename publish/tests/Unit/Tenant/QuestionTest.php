@@ -16,7 +16,7 @@ class QuestionTest extends TenantTestCase {
 
         Question::factory()->create([
             'form_id' => $form->id
-        ])->forms->attach($form->id);
+        ])->forms()->attach($form->id);
 
         $this->assertDatabaseHas('forms', $form->toArray());
     }
