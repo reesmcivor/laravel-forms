@@ -4,7 +4,7 @@ namespace ReesMcIvor\Forms;
 
 use Illuminate\Support\ServiceProvider;
 
-class ReesMcIvorFormsServiceProvider extends ServiceProvider
+class FormsPackageServiceProvider extends ServiceProvider
 {
     public function boot()
     {
