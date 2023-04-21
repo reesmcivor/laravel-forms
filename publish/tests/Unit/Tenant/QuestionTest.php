@@ -18,6 +18,8 @@ class QuestionTest extends TenantTestCase {
             'form_id' => $form->id
         ]);
 
+        $question->forms()->attach($form->id);
+
         $this->assertDatabaseHas('forms', $form->toArray());
     }
 
