@@ -13,7 +13,7 @@
                     <a href="{{ route('tenant.forms.destroy', $form) }}">Delete</a>
                 @endforeach
 
-                {{ $ }}
+                {{ $forms->links() }}
             </div>
         </div>
     </div>
