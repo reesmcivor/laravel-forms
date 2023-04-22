@@ -24,6 +24,6 @@ class ChoiceAnswer extends Model
 
     public function choices()
     {
-        return $this->hasOne(Choice::class, 'choice_id');
+        return $this->hasOne(Choice::class);
     }
 }
