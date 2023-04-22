@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['tenant'])->group(function () {
 
+    die('go');
     Route::get('forms', 'FormsController@index')->name('forms.index');
 
 });
