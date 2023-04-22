@@ -15,8 +15,7 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            'question' => $this->faker->name,
-            'answerable_type' => TextAnswer::class,
+            'question' => $this->faker->name
         ];
     }
 }
