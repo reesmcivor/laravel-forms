@@ -19,5 +19,7 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 Route::middleware('tenant', PreventAccessFromCentralDomains::class)->name('tenant.')->group(function () {
 
     Route::get('forms', [Controllers\FormController::class, 'index'])->name('forms.index');
+    Route::post('/posts', [Controllers\FormController::class, 'store'])->name('forms.store');
+    Route::get('/posts/create', [Controllers\FormController::class, 'create'])->name('forms.create');
 
 });
