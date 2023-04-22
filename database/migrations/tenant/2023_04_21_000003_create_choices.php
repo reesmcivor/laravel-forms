@@ -12,6 +12,7 @@ return new class extends Migration
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Question::class);
             $table->text('choice');
             $table->timestamps();
         });
