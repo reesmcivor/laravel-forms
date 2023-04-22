@@ -14,7 +14,7 @@
                             <x-form.input id="name" name="name" type="text" value="{{ old('name') }}" />
                         </div>
 
-                        <x-form.input-error for="title" />
+                        <x-form.input-error for="name" />
                     </div>
 
                     <div class="sm:col-span-6">
