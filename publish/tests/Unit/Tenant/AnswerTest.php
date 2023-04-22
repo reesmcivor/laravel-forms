@@ -5,6 +5,8 @@ namespace Tests\Forms\Unit\Tenant;
 use App\Models\User;
 use Faker\Provider\Text;
 use PHPUnit\Framework\Attributes\Test;
+use ReesMcIvor\Forms\Models\Choice;
+use ReesMcIvor\Forms\Models\ChoiceAnswer;
 use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
@@ -49,21 +51,35 @@ class AnswerTest extends TenantTestCase {
         $form = Form::create(['name' => 'Consultation']);
         $formEntry = FormEntry::create(['user_id' => User::factory()->create()->id, 'form_id' => $form->id]);
 
-        $question = Question::factory()->create(['type' => 'select']);
+        $question = Question::factory()->create(['question' => 'What is your favourite color?', 'type' => 'select']);
         $question->forms()->attach($form);
 
-        $answer = TextAnswer::create([ "question_id" => $question->id,  "answer" => "Test Answer"]);
+        $choice = Choice::factory()->create(['question_id' => $question->id, 'choice' => 'Blue']);
+        $choice2 = Choice::factory()->create(['question_id' => $question->id, 'choice' => 'Red']);
+        $answer = ChoiceAnswer::create([ "question_id" => $question->id,  "choice_id" => $choice->id]);
+        $answer2 = ChoiceAnswer::create([ "question_id" => $question->id,  "choice_id" => $choice2->id]);
 
         if($question->type == "select") {
             QuestionAnswer::create([
                 'form_entry_id' => $formEntry->id,
                 'question_id' => $question->id,
                 'answerable_id' => $answer->id,
-                'answerable_type' => TextAnswer::class,
+                'answerable_type' => ChoiceAnswer::class,
+            ]);
+
+            QuestionAnswer::create([
+                'form_entry_id' => $formEntry->id,
+                'question_id' => $question->id,
+                'answerable_id' => $answer2->id,
+                'answerable_type' => ChoiceAnswer::class,
             ]);
         }
 
-        $this->assertEquals('Test Answer', Question::get()->first()->questionAnswers->()->answerable->answer);
+        $answers = Question::get()->first()->questionAnswers->map(function($answer) {
+            return $answer->answerable->choice->choice;
+        })->toArray();
+
+        $this->assertEquals(['Blue', 'Red'], $answers);
     }
 
 }
