@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\ChoiceFactory;
 
-class ChoiceAnswer extends Model
+class Choice extends Model
 {
     use HasFactory;
 
