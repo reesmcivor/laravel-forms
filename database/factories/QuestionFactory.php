@@ -15,7 +15,8 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            'question' => $this->faker->name
+            'question' => $this->faker->name,
+            'type' => $this->faker->randomElement(['text', 'textarea', 'select', 'radio', 'checkbox']),
         ];
     }
 }
