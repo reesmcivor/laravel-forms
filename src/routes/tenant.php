@@ -17,6 +17,6 @@ use ReesMcIvor\Forms\Http\Controllers as Controllers;
 
 Route::middleware(['tenant'])->group(function () {
 
-    Route::get('forms', [Controllers\FormController::class, 'inde'])->name('forms.index');
+    Route::get('forms', [Controllers\FormController::class, 'index'])->name('forms.index');
 
 });
