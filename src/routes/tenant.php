@@ -19,5 +19,6 @@ Route::middleware(['tenant'])->group(function () {
     Route::get('forms', 'FormsController@index')->name('forms.index');
 
 });
+sdf
 
 Route::get('forms', 'FormsController@index')->name('forms.index');
