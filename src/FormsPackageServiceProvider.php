@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 
 class FormsPackageServiceProvider extends ServiceProvider
 {
+
+    protected $namespace = 'ReesMcIvor\Forms\Http\Controllers';
+
     public function boot()
     {
         if($this->app->runningInConsole()) {
