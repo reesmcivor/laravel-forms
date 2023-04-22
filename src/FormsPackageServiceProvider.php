@@ -17,7 +17,20 @@ class FormsPackageServiceProvider extends ServiceProvider
         }
     }
 
-    public function register()
+    public function map()
     {
+        $this->mapTenantRoutes();
+    }
+
+    protected function mapTenantRoutes()
+    {
+        Route::middleware(['web', 'tenant'])
+            ->namespace($this->namespace)
+            ->group($this->modulePath('routes/tenant.php'));
+    }
+
+    private function modulePath($path)
+    {
+        return __DIR__ . '/../../' . $path;
     }
 }
