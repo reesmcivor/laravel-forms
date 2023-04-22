@@ -5,14 +5,14 @@ namespace ReesMcIvor\Forms\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use ReesMcIvor\Forms\Models\TextAnswer;
 
-class ChoiceAnswerFactory extends Factory
+class ChoiceFactory extends Factory
 {
-    protected $model = TextAnswer::class;
+    protected $model = Choice::class;
 
     public function definition()
     {
         return [
-            'choice_id' => Choice::factory()->create(),
+            'choice' => $this->faker->name,
         ];
     }
 }
