@@ -11,7 +11,7 @@ class Question extends Model
 {
     use HasFactory;
 
-    const TYPE_TEXT = 'text';
+    const TYPE_TEXT = AnswerTest::class;
     const TYPE_CHOICE = 'choice';
 
     protected static function newFactory()
