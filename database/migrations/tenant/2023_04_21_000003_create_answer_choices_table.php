@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('answerables', function (Blueprint $table) {
+        Schema::create('answer_choices', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Question::class);
             $table->foreignIdFor(Form::class);
@@ -20,7 +20,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('form_question');
+        Schema::dropIfExists('answer_choices');
     }
 };
 
