@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms\Database\Factories;
 use ReesMcIvor\Forms\Models\Form;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use ReesMcIvor\Forms\Models\Question;
+use ReesMcIvor\Forms\Models\TextAnswer;
 use Tests\Forms\Unit\Tenant\AnswerTest;
 
 class QuestionFactory extends Factory
@@ -15,7 +16,7 @@ class QuestionFactory extends Factory
     {
         return [
             'question' => $this->faker->name,
-            'answerable_type' => AnswerText::class,
+            'answerable_type' => TextAnswer::class,
         ];
     }
 }
