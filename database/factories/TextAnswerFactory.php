@@ -13,8 +13,7 @@ class TextAnswerFactory extends Factory
     public function definition()
     {
         return [
-            'question' => $this->faker->name,
-            'answerable_type' => Question::TYPE_TEXT,
+            'answer' => Question::TYPE_TEXT,
         ];
     }
 }
