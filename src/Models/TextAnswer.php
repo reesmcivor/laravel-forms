@@ -19,8 +19,8 @@ class TextAnswer extends Model
         return TextAnswerFactory::new();
     }
 
-    public function question()
+    public function questionAnswer()
     {
-        return $this->morphOne(Question::class, 'answerable');
+        return $this->morphOne(QuestionAnswer::class, 'answerable');
     }
 }
