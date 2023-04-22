@@ -15,4 +15,9 @@ class FormController extends Controller
             'forms' => $forms,
         ]);
     }
+
+    public function create()
+    {
+        return view('forms::forms.create');
+    }
 }
