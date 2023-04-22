@@ -19,7 +19,7 @@ class FormsPackageServiceProvider extends ServiceProvider
             ], 'reesmcivor-forms');
         }
 
-        $this->loadRoutesFrom(__DIR__.'/../First/Routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/tenant.php');
     }
 
     public function map()
