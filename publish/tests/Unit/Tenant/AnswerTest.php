@@ -24,10 +24,7 @@ class AnswerTest extends TenantTestCase {
         $question = Question::factory()->create(['type' => 'text']);
         $question->forms()->attach($form);
 
-        $answer = TextAnswer::create([
-            "question_id" => $question->id,
-            "answer" => "Test Answer"
-        ]);
+        $answer = TextAnswer::create([ "question_id" => $question->id,  "answer" => "Test Answer"]);
 
         if($question->type == "text") {
             QuestionAnswer::create([
