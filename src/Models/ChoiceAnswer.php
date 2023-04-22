@@ -21,4 +21,9 @@ class ChoiceAnswer extends Model
     {
         return $this->morphOne(QuestionAnswer::class, 'answerable');
     }
+
+    public function choices()
+    {
+        return $this->hasMany(Choice::class);
+    }
 }
