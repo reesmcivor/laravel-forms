@@ -14,6 +14,11 @@ use Tests\TenantTestCase;
 
 class AnswerTest extends TenantTestCase {
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+    }
+
     #[Test]
     public function a_form_can_have_a_given_text_question()
     {
@@ -36,6 +41,12 @@ class AnswerTest extends TenantTestCase {
         }
 
         $this->assertEquals('Test Answer', Question::get()->first()->questionAnswers->first()->answerable->answer);
+    }
+
+    #[Test]
+    public function a_question_with_a_choice()
+    {
+
     }
 
 }
