@@ -11,6 +11,7 @@ class TextAnswer extends Model
     use HasFactory;
 
     protected $fillable = [
+        'question_id'
         'answer',
     ];
 
