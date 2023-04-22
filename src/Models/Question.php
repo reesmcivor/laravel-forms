@@ -10,6 +10,8 @@ class Question extends Model
 {
     use HasFactory;
 
+    const TYPE_TEXT = 'text';
+
     protected static function newFactory()
     {
         return QuestionFactory::new();
