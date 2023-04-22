@@ -31,12 +31,14 @@ class AnswerTest extends TenantTestCase {
             "answer" => "Test Answer"
         ]);
 
-        QuestionAnswer::create([
-            'form_entry_id' => $formEntry->id,
-            'question_id' => $question->id,
-            'answerable_id' => $answer->id,
-            'answerable_type' => TextAnswer::class,
-        ]);
+        if($question->type == "text") {
+            QuestionAnswer::create([
+                'form_entry_id' => $formEntry->id,
+                'question_id' => $question->id,
+                'answerable_id' => $answer->id,
+                'answerable_type' => TextAnswer::class,
+            ]);
+        }
 
         dd(Question::get()->first()->questionAnswers->first()->answerable->answer);
 
