@@ -30,7 +30,7 @@ class AnswerTest extends TenantTestCase {
             "question_id" => $question->id,
             "answer" => "Test Answer"
         ]);
-        
+
         QuestionAnswer::create([
             'form_entry_id' => $formEntry->id,
             'question_id' => $question->id,
