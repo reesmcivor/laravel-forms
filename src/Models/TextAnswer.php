@@ -11,12 +11,9 @@ class TextAnswer extends Model
 {
     use HasFactory;
 
-    const TYPE_TEXT = 'text';
-    const TYPE_CHOICE = 'choice';
-
     protected static function newFactory()
     {
-        return QuestionFactory::new();
+        return TextAnswerFactory::new();
     }
 
     public function forms()
