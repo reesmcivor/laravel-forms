@@ -24,6 +24,6 @@ class FormController extends Controller
     public function store(Request $request)
     {
         $form = Form::create($request->all());
-        return redirect()->route('forms.index');
+        return redirect()->route('tenant.forms.index');
     }
 }
