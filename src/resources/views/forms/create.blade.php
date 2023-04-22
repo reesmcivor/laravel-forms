@@ -35,7 +35,7 @@
                 <x-button variant="secondary" as="a" href="{{ route('tenant.posts.index') }}">Cancel</x-button>
             </span>
                 <span class="ml-3 inline-flex rounded-md shadow-sm">
-                <x-button type="submit">Post</x-button>
+                <x-button type="submit">Save</x-button>
             </span>
             </div>
         </div>
