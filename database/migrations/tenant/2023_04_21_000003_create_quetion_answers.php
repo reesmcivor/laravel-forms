@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('text_answers', function (Blueprint $table) {
+        Schema::create('question_answers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Question::class);
             $table->bigInteger('answerable_id');
@@ -21,7 +21,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('text_answers');
+        Schema::dropIfExists('question_answers');
     }
 };
 
