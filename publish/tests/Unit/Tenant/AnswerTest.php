@@ -37,7 +37,6 @@ class AnswerTest extends TenantTestCase {
 
         $this->assertEquals('Test Answer', Question::get()->first()->questionAnswers->first()->answerable->answer);
 
-
     }
 
 }
