@@ -2,7 +2,6 @@
 
 namespace ReesMcIvor\Forms\Database\Factories;
 
-use ReesMcIvor\Forms\Models\Form;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use ReesMcIvor\Forms\Models\Question;
 
