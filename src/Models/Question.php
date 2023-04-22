@@ -11,6 +11,7 @@ class Question extends Model
     use HasFactory;
 
     const TYPE_TEXT = 'text';
+    cosnt TYPE_CHOICE = 'choice';
 
     protected static function newFactory()
     {
