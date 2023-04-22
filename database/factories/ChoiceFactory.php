@@ -3,6 +3,7 @@
 namespace ReesMcIvor\Forms\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use ReesMcIvor\Forms\Models\Choice;
 use ReesMcIvor\Forms\Models\TextAnswer;
 
 class ChoiceFactory extends Factory
