@@ -4,7 +4,7 @@ namespace ReesMcIvor\Forms\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ReesMcIvor\Forms\Database\Factories\TextAnswerFactory;
+use ReesMcIvor\Forms\Database\Factories\ChoiceFactory;
 
 class ChoiceAnswer extends Model
 {
@@ -14,7 +14,7 @@ class ChoiceAnswer extends Model
 
     protected static function newFactory()
     {
-        return ChoiceAnswerFactory::new();
+        return ChoiceFactory::new();
     }
 
     public function questionAnswer()
