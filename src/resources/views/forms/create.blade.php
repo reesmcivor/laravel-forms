@@ -1,4 +1,4 @@
-@extends('layouts.tenant', ['title' => __('New post')])
+@extends('layouts.tenant', ['title' => __('New Form')])
 
 @section('content')
 
