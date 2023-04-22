@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('form_question', function (Blueprint $table) {
+        Schema::create('answerables', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Question::class);
             $table->foreignIdFor(Form::class);
