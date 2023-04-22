@@ -14,6 +14,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Question::class);
             $table->foreignIdFor(Form::class);
+            $table->string('answerable_type');
             $table->timestamps();
         });
     }
