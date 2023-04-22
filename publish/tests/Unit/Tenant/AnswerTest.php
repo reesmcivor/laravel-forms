@@ -3,7 +3,6 @@
 namespace Tests\Forms\Unit\Tenant;
 
 use App\Models\User;
-use Faker\Provider\Text;
 use PHPUnit\Framework\Attributes\Test;
 use ReesMcIvor\Forms\Models\Choice;
 use ReesMcIvor\Forms\Models\ChoiceAnswer;
