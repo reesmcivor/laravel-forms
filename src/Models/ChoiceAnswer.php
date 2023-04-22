@@ -14,7 +14,7 @@ class ChoiceAnswer extends Model
 
     protected static function newFactory()
     {
-        return TextAnswerFactory::new();
+        return ChoiceAnswerFactory::new();
     }
 
     public function questionAnswer()
