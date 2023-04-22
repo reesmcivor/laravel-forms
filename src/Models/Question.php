@@ -24,8 +24,8 @@ class Question extends Model
         return $this->belongsToMany(Form::class);
     }
 
-    public function choices()
+    public function answeable()
     {
-        return $this->morptTo(AnswerTest::class);
+        return $this->morptTo();
     }
 }
