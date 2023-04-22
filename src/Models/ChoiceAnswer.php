@@ -22,7 +22,7 @@ class ChoiceAnswer extends Model
         return $this->morphOne(QuestionAnswer::class, 'answerable');
     }
 
-    public function choices()
+    public function choice()
     {
         return $this->hasOne(Choice::class, 'id', 'choice_id');
     }
