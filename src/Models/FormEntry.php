@@ -5,7 +5,6 @@ namespace ReesMcIvor\Forms\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\FormEntryFactory;
-use ReesMcIvor\Forms\Database\Factories\FormFactory;
 
 class FormEntry extends Model
 {
