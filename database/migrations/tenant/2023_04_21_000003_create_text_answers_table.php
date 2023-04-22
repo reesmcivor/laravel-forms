@@ -13,7 +13,7 @@ return new class extends Migration
         Schema::create('text_answers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Question::class);
-            $table->foreignIdFor(Form::class);
+            $table->text('answer');
             $table->timestamps();
         });
     }
