@@ -11,7 +11,7 @@
                         <x-form.label for="name" value="Name"/>
 
                         <div class="mt-1 flex rounded-md shadow-sm">
-                            <x-form.input id="title" name="title" type="text" value="{{ old('title') }}" />
+                            <x-form.input id="name" name="name" type="text" value="{{ old('name) }}" />
                         </div>
 
                         <x-form.input-error for="title" />
