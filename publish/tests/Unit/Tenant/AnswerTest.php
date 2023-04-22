@@ -35,7 +35,7 @@ class AnswerTest extends TenantTestCase {
             ]);
         }
 
-        dd(Question::get()->first()->questionAnswers->first()->answerable->answer);
+        $this->assertEquals('Test Answer', Question::get()->first()->questionAnswers->first()->answerable->answer);
 
 
     }
