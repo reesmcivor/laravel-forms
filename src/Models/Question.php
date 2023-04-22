@@ -24,8 +24,8 @@ class Question extends Model
         return $this->belongsToMany(Form::class);
     }
 
-    public function answerable()
+    public function questionAnswer()
     {
-        return $this->morphTo();
+        return $this->hasOne(QuestionAnswer::class);
     }
 }
