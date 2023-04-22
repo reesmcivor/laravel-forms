@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('tenant.posts.store') }}">
+    <form method="POST" action="{{ route('tenant.forms.store') }}">
         @csrf
         <div>
             <div>
