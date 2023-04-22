@@ -10,6 +10,10 @@ class TextAnswer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'answer',
+    ];
+
     protected static function newFactory()
     {
         return TextAnswerFactory::new();
