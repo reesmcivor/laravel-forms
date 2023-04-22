@@ -24,8 +24,8 @@ class Question extends Model
         return $this->belongsToMany(Form::class);
     }
 
-    public function questionAnswer()
+    public function questionAnswers()
     {
-        return $this->hasOne(QuestionAnswer::class);
+        return $this->hasMany(QuestionAnswer::class);
     }
 }
