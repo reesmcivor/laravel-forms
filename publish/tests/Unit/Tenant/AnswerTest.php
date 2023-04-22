@@ -46,7 +46,24 @@ class AnswerTest extends TenantTestCase {
     #[Test]
     public function a_question_with_a_choice()
     {
+        $form = Form::create(['name' => 'Consultation']);
+        $formEntry = FormEntry::create(['user_id' => User::factory()->create()->id, 'form_id' => $form->id]);
 
+        $question = Question::factory()->create(['type' => 'select']);
+        $question->forms()->attach($form);
+
+        $answer = TextAnswer::create([ "question_id" => $question->id,  "answer" => "Test Answer"]);
+
+        if($question->type == "select") {
+            QuestionAnswer::create([
+                'form_entry_id' => $formEntry->id,
+                'question_id' => $question->id,
+                'answerable_id' => $answer->id,
+                'answerable_type' => TextAnswer::class,
+            ]);
+        }
+
+        $this->assertEquals('Test Answer', Question::get()->first()->questionAnswers->first()->answerable->answer);
     }
 
 }
