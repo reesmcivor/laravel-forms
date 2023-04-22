@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use ReesMcIvor\Forms\Models\TextAnswer;
 
 return new class extends Migration
 {
@@ -12,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('question');
             $table->enum('answerable_type', [
-                \ReesMcIvor\Forms\Models\TextAnswer::class
+                TextAnswer::class
             ]);
             $table->timestamps();
         });
