@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="sm:col-span-6">
-                        <x-form.label for="body" value="Body"/>
+                        <x-form.label for="description" value="Description"/>
                         <div class="mt-1 rounded-md shadow-sm">
                             <textarea id="body" name="body" rows="5" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 placeholder-gray-400 rounded-md shadow-sm mt-1 block w-full @error('body') border-red-500 @enderror">{{ old('body') }}</textarea>
                         </div>
