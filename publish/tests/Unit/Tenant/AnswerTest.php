@@ -15,7 +15,7 @@ use Tests\TenantTestCase;
 class AnswerTest extends TenantTestCase {
 
     #[Test]
-    public function a_form_can_have_a_given_question()
+    public function a_form_can_have_a_given_text_question()
     {
 
         $form = Form::create(['name' => 'Consultation']);
