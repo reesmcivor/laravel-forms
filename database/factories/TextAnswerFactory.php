@@ -3,11 +3,11 @@
 namespace ReesMcIvor\Forms\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use ReesMcIvor\Forms\Models\Question;
+use ReesMcIvor\Forms\Models\TextAnswer;
 
 class TextAnswerFactory extends Factory
 {
-    protected $model = Question::class;
+    protected $model = TextAnswer::class;
 
     public function definition()
     {
