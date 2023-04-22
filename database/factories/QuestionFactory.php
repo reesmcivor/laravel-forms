@@ -14,7 +14,7 @@ class QuestionFactory extends Factory
     {
         return [
             'question' => $this->faker->name,
-            'answetable_type' => Question::TYPE_TEXT,
+            'answerable_type' => Question::TYPE_TEXT,
         ];
     }
 }
