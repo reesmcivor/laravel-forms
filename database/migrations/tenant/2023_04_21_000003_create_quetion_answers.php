@@ -13,8 +13,8 @@ return new class extends Migration
         Schema::create('text_answers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Question::class);
-            $table->
-            $table->text('answer');
+            $table->bigInteger('answerable_id');
+            $table->string('answerable_type');
             $table->timestamps();
         });
     }
