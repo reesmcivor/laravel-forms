@@ -10,10 +10,7 @@ class TextAnswer extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'question_id'
-        'answer',
-    ];
+    protected $guarded = ['id'];
 
     protected static function newFactory()
     {
