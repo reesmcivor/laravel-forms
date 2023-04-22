@@ -15,7 +15,7 @@ class AnswerTest extends TenantTestCase {
         Question::factory()->create()->forms()->attach(
             Form::factory()->create()
         );
-        
+
     }
 
 }
