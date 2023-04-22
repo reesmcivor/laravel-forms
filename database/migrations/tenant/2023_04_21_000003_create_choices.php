@@ -19,7 +19,7 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('choice_answers');
+        Schema::dropIfExists('choices');
     }
 };
 
