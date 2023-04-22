@@ -7,7 +7,7 @@ use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\Question;
 use Tests\TenantTestCase;
 
-class QuestionTest extends TenantTestCase {
+class AnswerTest extends TenantTestCase {
 
     #[Test]
     public function a_form_can_have_a_given_question()
