@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->enum('type', ['text', 'choice', 'date', 'number']);
+            $table->enum('type', ['text', 'select', 'date', 'number']);
             $table->timestamps();
         });
     }
