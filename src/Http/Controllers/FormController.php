@@ -20,4 +20,10 @@ class FormController extends Controller
     {
         return view('forms::forms.create');
     }
+
+    public function store(Request $request)
+    {
+        $form = Form::create($request->all());
+        return redirect()->route('forms.index');
+    }
 }
