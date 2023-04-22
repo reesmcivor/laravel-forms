@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['tenant'])->group(function () {
-    // Your tenant-specific routes go here
+
+    Route::get('forms', 'FormsController@index')->name('forms.index');
+
 });
