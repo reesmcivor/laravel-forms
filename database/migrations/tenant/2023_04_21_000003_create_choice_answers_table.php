@@ -10,10 +10,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('text_answers', function (Blueprint $table) {
+        Schema::create('choice_answers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Question::class);
-            $table->text('answer');
+            $table->foreignIdFor(Choice::class);
             $table->timestamps();
         });
     }
