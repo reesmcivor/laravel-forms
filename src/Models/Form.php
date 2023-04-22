@@ -10,6 +10,8 @@ class Form extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     protected static function newFactory()
     {
         return FormFactory::new();
