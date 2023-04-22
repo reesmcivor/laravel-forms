@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('form_entries', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\ReesMcIvor\Forms\Models\Form::class);
