@@ -16,11 +16,6 @@ class TextAnswer extends Model
         return TextAnswerFactory::new();
     }
 
-    public function forms()
-    {
-        return $this->belongsToMany(Form::class);
-    }
-
     public function answerable()
     {
         return $this->morptTo();
