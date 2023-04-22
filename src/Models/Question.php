@@ -26,6 +26,6 @@ class Question extends Model
 
     public function answerable()
     {
-        return $this->morptTo();
+        return $this->morphTo();
     }
 }
