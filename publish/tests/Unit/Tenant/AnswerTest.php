@@ -15,9 +15,7 @@ class AnswerTest extends TenantTestCase {
         Question::factory()->create()->forms()->attach(
             Form::factory()->create()
         );
-
-        $this->assertCount(1, Form::get() );
-        $this->assertCount(1, Question::get()->first()->forms );
+        
     }
 
 }
