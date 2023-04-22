@@ -18,6 +18,8 @@ class FormsPackageServiceProvider extends ServiceProvider
                 __DIR__ . '/../publish/tests' => base_path('tests/Forms'),
             ], 'reesmcivor-forms');
         }
+
+        $this->loadRoutesFrom(__DIR__.'/../First/Routes/web.php');
     }
 
     public function map()
