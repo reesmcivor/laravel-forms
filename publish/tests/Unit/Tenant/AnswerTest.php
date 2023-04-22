@@ -22,7 +22,7 @@ class AnswerTest extends TenantTestCase {
         $formEntry = FormEntry::create(['user_id' => User::factory()->create()->id, 'form_id' => $form->id]);
 
         $question = Question::factory()->create(['type' => 'text']);
-        $question->forms()->attach(Form::factory()->create());
+        $question->forms()->attach($form);
 
         $answer = TextAnswer::create([
             "question_id" => $question->id,
