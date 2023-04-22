@@ -32,7 +32,7 @@
         <div class="mt-8 border-t border-gray-200 pt-5">
             <div class="flex justify-end">
             <span class="inline-flex rounded-md shadow-sm">
-                <x-button variant="secondary" as="a" href="{{ route('tenant.posts.index') }}">Cancel</x-button>
+                <x-button variant="secondary" as="a" href="{{ route('tenant.forms.index') }}">Cancel</x-button>
             </span>
                 <span class="ml-3 inline-flex rounded-md shadow-sm">
                 <x-button type="submit">Save</x-button>
