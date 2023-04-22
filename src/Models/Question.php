@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\QuestionFactory;
+use Tests\Forms\Unit\Tenant\AnswerTest;
 
 class Question extends Model
 {
@@ -21,5 +22,10 @@ class Question extends Model
     public function forms()
     {
         return $this->belongsToMany(Form::class);
+    }
+
+    public function choices()
+    {
+        return $this->morptTo(AnswerTest::class);
     }
 }
