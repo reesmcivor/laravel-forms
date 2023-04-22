@@ -16,8 +16,8 @@ class FormEntry extends Model
         return FormEntryFactory::new();
     }
 
-    public function questions()
+    public function form()
     {
-        return $this->belongsToMany(Question::class);
+        return $this->belongsTo(Form::class);
     }
 }
