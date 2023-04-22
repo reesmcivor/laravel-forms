@@ -8,7 +8,7 @@
             <div>
                 <div class="grid grid-cols-1 sm:grid-cols-6 gap-6">
                     <div class="sm:col-span-3">
-                        <x-form.label for="title" value="Title"/>
+                        <x-form.label for="name" value="Name"/>
 
                         <div class="mt-1 flex rounded-md shadow-sm">
                             <x-form.input id="title" name="title" type="text" value="{{ old('title') }}" />
