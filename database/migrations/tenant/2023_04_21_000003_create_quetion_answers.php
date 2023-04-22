@@ -12,6 +12,7 @@ return new class extends Migration
     {
         Schema::create('question_answers', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(FormEntry::class);
             $table->foreignIdFor(Question::class);
             $table->bigInteger('answerable_id');
             $table->string('answerable_type');
