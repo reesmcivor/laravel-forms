@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\TextAnswerFactory;
 
-class TextAnswer extends Model
+class ChoiceAnswer extends Model
 {
     use HasFactory;
 
