@@ -92,11 +92,9 @@ class FormController extends Controller
             'form_id' => $form->id,
         ]);
 
-        dd($request->get('question'));
+        foreach($request->get('question') as $questionId => $questionAnswer)
+        {
 
-
-
-
-
+        }
     }
 }
