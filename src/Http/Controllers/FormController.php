@@ -37,7 +37,7 @@ class FormController extends Controller
     public function show(Form $form)
     {
 
-
+        /*
         Question::all()->each(fn($question) => $question->delete());
 
         $form->questions()->attach(
@@ -65,7 +65,7 @@ class FormController extends Controller
 
 
         $form->questions()->attach($question);
-        
+        */
 
 
         return view('forms::forms.show', [
