@@ -47,6 +47,10 @@ class FormController extends Controller
                 'question' => 'What is your favourite colour?',
                 'required' => true,
             ])
+            Choice::create([
+                'question_id' => $question->id,
+                'choice' => 'Red',
+            ])
         );
 
         return view('forms::forms.show', [
