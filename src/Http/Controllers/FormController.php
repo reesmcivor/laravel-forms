@@ -83,4 +83,9 @@ class FormController extends Controller
         $form->delete();
         return redirect()->route('tenant.forms.index');
     }
+
+    public function submit(Form $form)
+    {
+        dd($form);
+    }
 }
