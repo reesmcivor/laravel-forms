@@ -37,8 +37,6 @@ class FormController extends Controller
             'required' => true,
         ]);
 
-        dd(Form::find(5)->questions);
-
         return view('forms::forms.show', [
             'form' => $form,
         ]);
