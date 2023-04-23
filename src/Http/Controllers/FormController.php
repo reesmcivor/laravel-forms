@@ -15,7 +15,6 @@ class FormController extends Controller
 {
     public function index()
     {
-        FormEntry::create(['form_id' => 5, 'user_id' => 1]);
         $formEntries = FormEntry::with('form')->has('form')->paginate(10);
         return view('forms::forms.index', [
             'formEntries' => $formEntries,
