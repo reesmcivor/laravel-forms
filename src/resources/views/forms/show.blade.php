@@ -1,4 +1,4 @@
-@extends('layouts.tenant', ['title' => 'Forms'])
+@extends('layouts.tenant', ['title' => $form->name])
 
 @section('content')
 
