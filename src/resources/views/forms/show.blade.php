@@ -42,7 +42,7 @@
                 @endforeach
 
                 <div class="actions flex space-x-2">
-                    <div class="mt-10">
+                    <div class="p-10">
                         <x-button type="submit">Submit</x-button>
                     </div>
                 </div>
