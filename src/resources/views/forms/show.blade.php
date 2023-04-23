@@ -12,7 +12,7 @@
             <div class="mt-3 text-base text-gray-500">
                 {!! $form->description !!}
             </div>
-            
+
 
         </div>
     </div>
