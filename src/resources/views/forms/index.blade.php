@@ -20,7 +20,7 @@
                         <form method="POST" action="{{ route('tenant.forms.destroy', $form->id) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500">Delete</button>
+                            <button type="submit" class="btn-danger">Delete</button>
                         </form>
                     </div>
                 </div>
