@@ -40,6 +40,11 @@
                         </div>
                     </div>
                 @endforeach
+
+                <div class="actions flex space-x-2">
+                    <div>
+                        <x-button type="submit">Submit</x-button>
+                    </div>
             </form>
 
         </div>
