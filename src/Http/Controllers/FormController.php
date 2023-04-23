@@ -26,4 +26,30 @@ class FormController extends Controller
         $form = Form::create($request->all());
         return redirect()->route('tenant.forms.index');
     }
+
+    public function show(Form $form)
+    {
+        return view('forms::forms.show', [
+            'form' => $form,
+        ]);
+    }
+
+    public function edit(Form $form)
+    {
+        return view('forms::forms.edit', [
+            'form' => $form,
+        ]);
+    }
+
+    public function update(Request $request, Form $form)
+    {
+        $form->update($request->all());
+        return redirect()->route('tenant.forms.index');
+    }
+
+    public function destroy(Form $form)
+    {
+        $form->delete();
+        return redirect()->route('tenant.forms.index');
+    }
 }
