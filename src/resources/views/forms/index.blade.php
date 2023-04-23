@@ -12,10 +12,10 @@
                     </a>
                     <div class="bg-white p-6"><a href="https://test.tenancy.ddev.site/posts/1">
                             <h3 class="text-xl font-semibold text-gray-900">
-                                {{ $form }}
+                                {{ $form->name }}
                             </h3>
                             <p class="mt-3 text-base text-gray-500">
-                                Try creating another blog post here, then register as another tenant on your central domain. You'll see the data separation in practice.
+                                {{ $ }}
                             </p>
                         </a><div class="mt-6 flex items-center"><a href="https://test.tenancy.ddev.site/posts/1">
                             </a><div class=""><a href="https://test.tenancy.ddev.site/posts/1">
