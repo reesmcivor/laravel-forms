@@ -40,7 +40,7 @@ class FormController extends Controller
                 'required' => true,
             ])
 
-        ]);
+        );
 
         return view('forms::forms.show', [
             'form' => $form,
