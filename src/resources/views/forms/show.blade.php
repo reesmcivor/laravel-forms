@@ -29,6 +29,16 @@
                                 @endif
 
                                 @if($question->type == "select")
+
+                                        <?php
+
+                                        $answers = $question->questionAnswers->map(function($answer) {
+                                            return $answer->answerable->choice->choice;
+                                        })->toArray();
+
+                                        print_r($answers);
+                                        ?>
+
                                     <select name="question[{{ $question->id }}]" id="" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 placeholder-gray-400 rounded-md shadow-sm mt-1 block w-full @error('description') border-red-500 @enderror">
                                         <option value="">Please select option</option>
                                         @foreach($question->choices as $option)
