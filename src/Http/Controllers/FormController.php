@@ -97,11 +97,11 @@ class FormController extends Controller
             'form_id' => $form->id,
         ]);
 
-        foreach($request->get('question') as $questionId => $questionAnswer)
+        foreach($request->get('question') as $questionId => $questionAnswerId)
         {
             $question = Question::find($questionId);
             if($question->type == "select") {
-                ChoiceAnswer::create([ "question_id" => $question->id,  "choice_id" => $questionAnswer->id]);
+                ChoiceAnswer::create([ "question_id" => $question->id,  "choice_id" => $questionAnswerId]);
                 QuestionAnswer::create([
                     'form_entry_id' => $formEntry->id,
                     'question_id' => $question->id,
