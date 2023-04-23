@@ -12,7 +12,7 @@ class Question extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    
+
     const TYPE_TEXT = AnswerTest::class;
     const TYPE_CHOICE = 'choice';
 

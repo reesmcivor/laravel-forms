@@ -33,7 +33,7 @@ class FormController extends Controller
         Question::create([
             'form_id' => 5,
             'type' => 'text',
-            'label' => 'What is your name?',
+            'question' => 'What is your name?',
             'required' => true,
         ]);
         return view('forms::forms.show', [
