@@ -15,7 +15,7 @@ class FormController extends Controller
 {
     public function index()
     {
-        FormEntry::delete()->where('user_id', auth()->user()->id);
+        FormEntry::all()->each(fn($item) => $item->delete());
         $formEntries = FormEntry::with('form')->has('form')->paginate(10);
         return view('forms::forms.index', [
             'formEntries' => $formEntries,
