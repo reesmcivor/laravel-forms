@@ -43,7 +43,7 @@ class FormController extends Controller
 
         $form->questions()->attach(
             Question::create([
-                'type' => 'choice',
+                'type' => 'select',
                 'question' => 'What is your favourite colour?',
                 'required' => true,
                 'options' => [
