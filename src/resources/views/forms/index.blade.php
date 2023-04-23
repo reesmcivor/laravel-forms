@@ -8,7 +8,7 @@
 
                 @foreach($forms as $form)
                 <div class="block mt-8 rounded-lg shadow overflow-hidden">
-                        <a href="{{ route('tenants.form.show', $form->id) }}">
+                        <a href="{{ route('tenants.forms.show', $form->id) }}">
                         </a>
                     <div class="bg-white p-6"><a href="https://test.tenancy.ddev.site/posts/1">
                             <h3 class="text-xl font-semibold text-gray-900">
