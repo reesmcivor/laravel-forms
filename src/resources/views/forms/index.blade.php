@@ -18,30 +18,7 @@
                             </p>
                         </a>
                         <div class="mt-6 flex items-center">
-                            <a href="https://test.tenancy.ddev.site/posts/1">
-                            </a><div class=""><a href="https://test.tenancy.ddev.site/posts/1">
-                                </a><a href="#">
-                                    <img class="h-10 w-10 rounded-full" src="https://www.gravatar.com/avatar/8b81580c7c43a7cf38f11f2659690e7c" alt="Test">
-                                </a>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm font-medium text-gray-900">
-                                    <a href="#" class="">
-                                        Test
-                                    </a>
-                                </p>
-                                <div class="flex text-sm text-gray-500">
-                                    <time datetime="2023-04-22">
-                                        Apr 22, 2023
-                                    </time>
-                                    <span class="mx-1">
-                    ·
-                  </span>
-                                    <span>
-                    22 words
-                  </span>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
