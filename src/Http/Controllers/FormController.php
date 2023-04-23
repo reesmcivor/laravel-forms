@@ -49,6 +49,7 @@ class FormController extends Controller
         ]);
 
         Choice::create([
+            'question_id' => $question->id,
             'choice' => 'Blue',
         ]);
 
