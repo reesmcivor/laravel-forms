@@ -28,7 +28,7 @@
                             </div>
                             <div>
                                 <a href="{{ route('tenant.forms.edit', $form->id) }}">
-                                    <x-button variant="secondary">Edit</x-button>
+                                    <x-button type="submit">Save</x-button>
                                 </a>
                             </div>
                         </div>
