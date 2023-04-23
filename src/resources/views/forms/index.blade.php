@@ -5,10 +5,13 @@
     <div class="">
         <div class="max-w-7xl mx-auto">
             <x-button class="px-5" as="a" href="{{ route('tenant.forms.create') }}">New form</x-button>
-            <div class="block mt-8 rounded-lg shadow overflow-hidden">
+
                 @foreach($forms as $form)
-                    {{ $form->name }}
-                    <a href="{{ route('tenant.forms.edit', $form) }}">Edit</a>
+                    <div class="block mt-8 rounded-lg shadow overflow-hidden">
+                        {{ $form->name }}
+                        <a href="{{ route('tenant.forms.edit', $form) }}">Edit</a>
+                        <div>
+                </div>
                 @endforeach
 
                 {{ $forms->links() }}
