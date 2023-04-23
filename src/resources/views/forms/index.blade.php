@@ -17,9 +17,6 @@
                                 {!! $form->description !!}
                             </p>
                         </a>
-                        <div class="mt-6 flex items-center">
-                            
-                        </div>
                     </div>
                 </div>
 
