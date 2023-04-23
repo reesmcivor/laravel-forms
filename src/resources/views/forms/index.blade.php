@@ -15,7 +15,7 @@
                                 {{ $form->name }}
                             </h3>
                             <p class="mt-3 text-base text-gray-500">
-                                {{ $form->description }}
+                                {!! $form->description !!}
                             </p>
                         </a><div class="mt-6 flex items-center"><a href="https://test.tenancy.ddev.site/posts/1">
                             </a><div class=""><a href="https://test.tenancy.ddev.site/posts/1">
