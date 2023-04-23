@@ -97,8 +97,6 @@ class FormController extends Controller
             'form_id' => $form->id,
         ]);
 
-        dd($formEntry);
-
         foreach($request->get('question') as $questionId => $questionAnswer)
         {
             $question = Question::find($questionId);
