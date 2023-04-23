@@ -24,7 +24,7 @@ Route::middleware('tenant', PreventAccessFromCentralDomains::class)->name('tenan
     Route::middleware(['auth', CheckSubscription::class])->group(function () {
         Route::middleware(OwnerOnly::class)->group(function () {
             Route::resource('forms', Controllers\FormController::class);
-            Route::post('forms/{form}/submit', [Controllers\FormController::class, 'addQuestion'])->name('forms.questions.store');
+            Route::post('forms/{form}/submit', [Controllers\FormController::class, 'submit'])->name('forms.entry.submit');
         });
     });
 
