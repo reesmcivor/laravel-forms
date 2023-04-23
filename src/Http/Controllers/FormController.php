@@ -46,11 +46,6 @@ class FormController extends Controller
                 'type' => 'select',
                 'question' => 'What is your favourite colour?',
                 'required' => true,
-                'options' => [
-                    'red',
-                    'green',
-                    'blue',
-                ],
             ])
         );
 
