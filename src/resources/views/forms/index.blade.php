@@ -6,8 +6,10 @@
         <div class="max-w-7xl mx-auto">
             <x-button class="px-5" as="a" href="{{ route('tenant.forms.create') }}">New form</x-button>
 
-            <div class="block mt-8 rounded-lg shadow overflow-hidden"><a href="https://test.tenancy.ddev.site/posts/1">
-                </a><div class="bg-white p-6"><a href="https://test.tenancy.ddev.site/posts/1">
+            <div class="block mt-8 rounded-lg shadow overflow-hidden">
+                <a href="https://test.tenancy.ddev.site/posts/1">
+                </a>
+                <div class="bg-white p-6"><a href="https://test.tenancy.ddev.site/posts/1">
                         <h3 class="text-xl font-semibold text-gray-900">
                             Welcome
                         </h3>
@@ -41,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            
+
                 @foreach($forms as $form)
                     <div class="block mt-8 rounded-lg shadow overflow-hidden">
                         <div class="bg-white">
