@@ -48,6 +48,8 @@ class FormController extends Controller
             'required' => true,
         ]);
 
+        dd($question);
+
         Choice::create([
             'question_id' => $question->id,
             'choice' => 'Blue',
