@@ -17,7 +17,7 @@ class FormController extends Controller
     {
         $formEntries = FormEntry::with('form')->paginate(10);
         return view('forms::forms.index', [
-            'forms' => $formEntries,
+            'formEntries' => $formEntries,
         ]);
     }
 
