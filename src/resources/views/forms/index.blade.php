@@ -9,7 +9,6 @@
                 @foreach($forms as $form)
                     {{ $form->name }}
                     <a href="{{ route('tenant.forms.edit', $form) }}">Edit</a>
-                    <a href="{{ route('tenant.forms.destroy', $form) }}">Delete</a>
                 @endforeach
 
                 {{ $forms->links() }}
