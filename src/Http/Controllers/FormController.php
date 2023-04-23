@@ -38,7 +38,7 @@ class FormController extends Controller
                 'type' => 'text',
                 'question' => 'What is your name?',
                 'required' => true,
-            ]);
+            ])
         );
 
         $form->questions()->attach(
