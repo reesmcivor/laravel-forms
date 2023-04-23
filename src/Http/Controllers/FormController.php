@@ -101,8 +101,6 @@ class FormController extends Controller
         {
             $question = Question::find($questionId);
             if($question->type == "select") {
-
-
                 QuestionAnswer::create([
                     'form_entry_id' => $formEntry->id,
                     'question_id' => $question->id,
