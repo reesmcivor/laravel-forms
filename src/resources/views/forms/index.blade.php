@@ -17,7 +17,8 @@
                                 {!! $form->description !!}
                             </p>
                         </a>
-                        <div class="mt-6 flex items-center"><a href="https://test.tenancy.ddev.site/posts/1">
+                        <div class="mt-6 flex items-center">
+                            <a href="https://test.tenancy.ddev.site/posts/1">
                             </a><div class=""><a href="https://test.tenancy.ddev.site/posts/1">
                                 </a><a href="#">
                                     <img class="h-10 w-10 rounded-full" src="https://www.gravatar.com/avatar/8b81580c7c43a7cf38f11f2659690e7c" alt="Test">
