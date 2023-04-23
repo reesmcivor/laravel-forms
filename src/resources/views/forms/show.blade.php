@@ -21,7 +21,9 @@
                             {{ $question->question }}
                         </h3>
                         <p class="mt-3 text-base text-gray-500">
-                            {!! $question->description !!}
+                            @if($question->type == 'text')
+                                <input type="text" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 placeholder-gray-400 rounded-md shadow-sm mt-1 block w-full @error('description') border-red-500 @enderror">
+                            @endif
                         </p>
                     </div>
                 </div>
