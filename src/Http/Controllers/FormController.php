@@ -16,7 +16,7 @@ class FormController extends Controller
     public function index()
     {
         //FormEntry::all()->each(fn($item) => $item->delete());
-        FormEntry::create(['form_id' => 6, 'user_id' => 1]);
+        //FormEntry::create(['form_id' => 6, 'user_id' => 1]);
         $formEntries = FormEntry::with('form')->has('form')->paginate(10);
         return view('forms::forms.index', [
             'formEntries' => $formEntries,
