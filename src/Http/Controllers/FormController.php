@@ -52,6 +52,10 @@ class FormController extends Controller
             'question_id' => $question->id,
             'choice' => 'Blue',
         ]);
+        Choice::create([
+            'question_id' => $question->id,
+            'choice' => 'Red',
+        ]);
 
         $form->questions()->attach($question);
 
