@@ -38,7 +38,20 @@ class FormController extends Controller
                 'type' => 'text',
                 'question' => 'What is your name?',
                 'required' => true,
-            ])
+            ]);
+        );
+
+        $form->questions()->attach(
+            Question::create([
+                'type' => 'choice',
+                'question' => 'What is your favourite colour?',
+                'required' => true,
+                'options' => [
+                    'red',
+                    'green',
+                    'blue',
+                ],
+            ]);
         );
 
         return view('forms::forms.show', [
