@@ -18,7 +18,7 @@
                             </p>
                         </a>
 
-                        <div class="actions d-inline">
+                        <div class="actions flex">
                             <div>
                                 <form method="POST" action="{{ route('tenant.forms.destroy', $form->id) }}">
                                     @csrf
