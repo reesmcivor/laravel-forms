@@ -17,7 +17,11 @@
                                 {!! $form->description !!}
                             </p>
                         </a>
-                        <a href="{{ route('tenant.forms.') }}"
+                        <form method="POST" action="{{ route('tenant.forms.destroy', $form->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-500">Delete</button>
+                        </form>
                     </div>
                 </div>
 
