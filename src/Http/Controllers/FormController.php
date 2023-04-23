@@ -30,12 +30,14 @@ class FormController extends Controller
 
     public function show(Form $form)
     {
-        Question::create([
-            'form_id' => 5,
-            'type' => 'text',
-            'question' => 'What is your name?',
-            'required' => true,
-        ]);
+
+        $form->questions()->attach(
+            Question::create([
+                'type' => 'text',
+                'question' => 'What is your name?',
+                'required' => true,
+            ])
+        );
 
         return view('forms::forms.show', [
             'form' => $form,
