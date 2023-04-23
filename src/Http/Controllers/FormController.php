@@ -105,7 +105,7 @@ class FormController extends Controller
                 QuestionAnswer::create([
                     'form_entry_id' => $formEntry->id,
                     'question_id' => $question->id,
-                    'answerable_id' => ChoiceAnswer::create([ "question_id" => $question->id,  "choice_id" => $questionAnswerId]),
+                    'answerable_id' => ChoiceAnswer::create([ "question_id" => $question->id,  "choice_id" => $questionAnswerId])->id,
                     'answerable_type' => ChoiceAnswer::class,
                 ]);
             }
