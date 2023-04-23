@@ -43,7 +43,7 @@
 
                 @endforeach
 
-                {{ $forms->links() }}
+                {{ $formEntries->links() }}
             </div>
         </div>
     </div>
