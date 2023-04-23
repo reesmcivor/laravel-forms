@@ -8,8 +8,8 @@
 
                 @foreach($forms as $form)
                 <div class="block mt-8 rounded-lg shadow overflow-hidden">
-                    <a href="https://test.tenancy.ddev.site/posts/1">
-                    </a>
+                        <a href="{{ route('tenant.form.show', $form->id) }}">
+                        </a>
                     <div class="bg-white p-6"><a href="https://test.tenancy.ddev.site/posts/1">
                             <h3 class="text-xl font-semibold text-gray-900">
                                 {{ $form->name }}
@@ -17,7 +17,8 @@
                             <p class="mt-3 text-base text-gray-500">
                                 {!! $form->description !!}
                             </p>
-                        </a><div class="mt-6 flex items-center"><a href="https://test.tenancy.ddev.site/posts/1">
+                        </a>
+                        <div class="mt-6 flex items-center"><a href="https://test.tenancy.ddev.site/posts/1">
                             </a><div class=""><a href="https://test.tenancy.ddev.site/posts/1">
                                 </a><a href="#">
                                     <img class="h-10 w-10 rounded-full" src="https://www.gravatar.com/avatar/8b81580c7c43a7cf38f11f2659690e7c" alt="Test">
