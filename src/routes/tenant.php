@@ -23,7 +23,7 @@ Route::middleware('tenant', PreventAccessFromCentralDomains::class)->name('tenan
 
     Route::middleware(['auth', CheckSubscription::class])->group(function () {
         Route::middleware(OwnerOnly::class)->group(function () {
-            Route::resource('forns', Controllers\FormController::class);
+            Route::resource('forms', Controllers\FormController::class);
 
             //Route::get('forms', [Controllers\FormController::class, 'index'])->name('forms.index');
             //Route::post('forms', [Controllers\FormController::class, 'store'])->name('forms.store');
