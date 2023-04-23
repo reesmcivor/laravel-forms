@@ -33,13 +33,12 @@ class FormController extends Controller
 
         Question::all()->each(fn($question) => $question->delete());
 
-        $form->questions()->attach([
+        $form->questions()->attach(
             Question::create([
                 'type' => 'text',
                 'question' => 'What is your name?',
                 'required' => true,
             ])
-
         );
 
         return view('forms::forms.show', [
