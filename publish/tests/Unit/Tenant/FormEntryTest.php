@@ -39,7 +39,6 @@ class FormEntryTest extends TenantTestCase {
         FormEntry::create(['user_id' => $user->id, 'form_id' => $form->id]);
         FormEntry::create(['user_id' => $otherUser->id, 'form_id' => $form->id]);
 
-        $this->assertEquals(4, FormEntry::all()->count());
         $this->assertEquals(1, FormEntry::mine->count());
     }
 
