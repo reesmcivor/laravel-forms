@@ -90,7 +90,7 @@ class FormController extends Controller
         $formEntry = FormEntry::firstOrCreate([
             'user_id' => auth()->user()->id,
             'form_id' => $form->id,
-            'complete' => false
+            //'complete' => false
         ]);
 
 
