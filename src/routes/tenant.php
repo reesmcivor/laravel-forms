@@ -27,5 +27,6 @@ Route::middleware('tenant', PreventAccessFromCentralDomains::class)->name('tenan
             Route::get('forms/edit/{id}', [Controllers\FormController::class, 'create'])->name('forms.edit');
 
         });
+    });
 
 });
