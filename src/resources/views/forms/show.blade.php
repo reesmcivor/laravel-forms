@@ -14,7 +14,7 @@
             </div>
 
 
-            
+            {{ $form->questions }}
 
         </div>
     </div>
