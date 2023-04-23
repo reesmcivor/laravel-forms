@@ -51,7 +51,7 @@ class FormController extends Controller
                     'green',
                     'blue',
                 ],
-            ]);
+            ])
         );
 
         return view('forms::forms.show', [
