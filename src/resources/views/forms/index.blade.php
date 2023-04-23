@@ -17,6 +17,7 @@
                                 {!! $form->description !!}
                             </p>
                         </a>
+                        <a href="{{ route('tenant.forms.') }}"
                     </div>
                 </div>
 
