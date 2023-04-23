@@ -31,7 +31,8 @@ class FormController extends Controller
     public function show(Form $form)
     {
 
-        Question::all()->delete();
+        Question::all()->each(fn($question) => $question->delete());
+        
         $form->questions()->attach(
             Question::create([
                 'type' => 'text',
