@@ -86,6 +86,6 @@ class FormController extends Controller
 
     public function submit(Form $form)
     {
-        dd($form);
+        
     }
 }
