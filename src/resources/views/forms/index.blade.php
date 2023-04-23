@@ -18,7 +18,7 @@
                             </p>
                         </a>
 
-                        <div class="actions flex">
+                        <div class="actions flex space-x-2">
                             <div>
                                 <form method="POST" action="{{ route('tenant.forms.destroy', $form->id) }}">
                                     @csrf
