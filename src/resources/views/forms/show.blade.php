@@ -45,6 +45,7 @@
                     <div>
                         <x-button type="submit">Submit</x-button>
                     </div>
+                </div>
             </form>
 
         </div>
