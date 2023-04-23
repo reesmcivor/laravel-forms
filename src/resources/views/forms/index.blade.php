@@ -10,8 +10,7 @@
                     <div class="block mt-8 rounded-lg shadow overflow-hidden">
                         {{ $form->name }}
                         <a href="{{ route('tenant.forms.edit', $form) }}">Edit</a>
-                        <div>
-                </div>
+                    <div>
                 @endforeach
 
                 {{ $forms->links() }}
