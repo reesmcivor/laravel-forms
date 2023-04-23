@@ -85,12 +85,14 @@ class FormController extends Controller
         return redirect()->route('tenant.forms.index');
     }
 
-    public function submit(Form $form)
+    public function submit(Form $form, Request $request)
     {
         $formEntry = FormEntry::firstOrCreate([
             'user_id' => auth()->user()->id,
             'form_id' => $form->id,
         ]);
+
+
 
 
 
