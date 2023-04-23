@@ -30,7 +30,7 @@ class FormController extends Controller
     public function show(Form $form)
     {
         Question::create([
-            'form_id' => 1,
+            'form_id' => 5,
             'type' => 'text',
             'label' => 'What is your name?',
             'required' => true,
