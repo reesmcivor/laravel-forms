@@ -33,7 +33,7 @@
                                         <?php
 
                                         $answers = $question->questionAnswers->map(function($answer) {
-                                            dd($answer->answerable);
+                                            dd($answer->answerable->choice->choice);
                                             return $answer->answerable->choice->choice;
                                         })->toArray();
 
