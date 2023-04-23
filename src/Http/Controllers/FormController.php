@@ -32,7 +32,7 @@ class FormController extends Controller
     {
 
         Question::all()->each(fn($question) => $question->delete());
-        
+
         $form->questions()->attach(
             Question::create([
                 'type' => 'text',
