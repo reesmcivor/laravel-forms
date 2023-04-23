@@ -36,6 +36,9 @@ class FormController extends Controller
             'question' => 'What is your name?',
             'required' => true,
         ]);
+
+        Form::find(5)->questions();
+
         return view('forms::forms.show', [
             'form' => $form,
         ]);
