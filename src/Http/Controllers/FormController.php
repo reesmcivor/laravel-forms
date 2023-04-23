@@ -92,6 +92,8 @@ class FormController extends Controller
             'form_id' => $form->id,
         ]);
 
+        print_r($_REQUEST);
+        exit;
         dd($request->get('questions'));
 
 
