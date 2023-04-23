@@ -4,13 +4,8 @@ namespace Tests\Forms\Unit\Tenant;
 
 use App\Models\User;
 use PHPUnit\Framework\Attributes\Test;
-use ReesMcIvor\Forms\Models\Choice;
-use ReesMcIvor\Forms\Models\ChoiceAnswer;
 use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
-use ReesMcIvor\Forms\Models\Question;
-use ReesMcIvor\Forms\Models\QuestionAnswer;
-use ReesMcIvor\Forms\Models\TextAnswer;
 use Tests\TenantTestCase;
 
 class FormEntryTest extends TenantTestCase {
@@ -39,7 +34,7 @@ class FormEntryTest extends TenantTestCase {
         FormEntry::create(['user_id' => $user->id, 'form_id' => $form->id]);
         FormEntry::create(['user_id' => $otherUser->id, 'form_id' => $form->id]);
 
-        $this->assertEquals(1, FormEntry::mine->get()->count());
+        $this->assertEquals(1, FormEntry::get()->count());
     }
 
 }
