@@ -15,6 +15,7 @@ class FormController extends Controller
 {
     public function index()
     {
+        dd(FormEntry::all());
         $forms = Form::paginate(10);
         return view('forms::forms.index', [
             'forms' => $forms,
