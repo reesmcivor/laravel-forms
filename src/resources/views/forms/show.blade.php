@@ -14,7 +14,18 @@
             </div>
 
 
-            {{ $form->questions }}
+            @foreach($form->questions as $question)
+                <div class="block mt-8 rounded-lg shadow overflow-hidden">
+                    <div class="bg-white p-6">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            {{ $question->name }}
+                        </h3>
+                        <p class="mt-3 text-base text-gray-500">
+                            {!! $question->description !!}
+                        </p>
+                    </div>
+                </div>
+            @endforeach
 
         </div>
     </div>
