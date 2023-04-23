@@ -14,30 +14,33 @@
             </div>
 
 
-            @foreach($form->questions as $question)
-                <div class="block mt-8 rounded-lg shadow overflow-hidden">
-                    <div class="bg-white p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">
-                            {{ $question->question }}
-                        </h3>
-                        <p class="mt-3 text-base text-gray-500">
-                            
-                            @if($question->type == 'text')
-                                <input name="question[{{ $question->id }}] type="text" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 placeholder-gray-400 rounded-md shadow-sm mt-1 block w-full @error('description') border-red-500 @enderror">
-                            @endif
+            <form method="POST" action="{{ route('tenant.forms.submit', $form->id) }}">
+                @csrf
+                @foreach($form->questions as $question)
+                    <div class="block mt-8 rounded-lg shadow overflow-hidden">
+                        <div class="bg-white p-6">
+                            <h3 class="text-xl font-semibold text-gray-900">
+                                {{ $question->question }}
+                            </h3>
+                            <p class="mt-3 text-base text-gray-500">
 
-                            @if($question->type == "select")
-                                <select name="question[{{ $question->id }}]" id="" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 placeholder-gray-400 rounded-md shadow-sm mt-1 block w-full @error('description') border-red-500 @enderror">
-                                    <option value="">Please select option</option>
-                                    @foreach($question->choices as $option)
-                                        <option value="{{ $option->id }}">{{ $option->choice }}</option>
-                                    @endforeach
-                                </select>
-                            @endif
-                        </p>
+                                @if($question->type == 'text')
+                                    <input name="question[{{ $question->id }}] type="text" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 placeholder-gray-400 rounded-md shadow-sm mt-1 block w-full @error('description') border-red-500 @enderror">
+                                @endif
+
+                                @if($question->type == "select")
+                                    <select name="question[{{ $question->id }}]" id="" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 placeholder-gray-400 rounded-md shadow-sm mt-1 block w-full @error('description') border-red-500 @enderror">
+                                        <option value="">Please select option</option>
+                                        @foreach($question->choices as $option)
+                                            <option value="{{ $option->id }}">{{ $option->choice }}</option>
+                                        @endforeach
+                                    </select>
+                                @endif
+                            </p>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </form>
 
         </div>
     </div>
