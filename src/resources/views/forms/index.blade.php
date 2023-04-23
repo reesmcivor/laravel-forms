@@ -6,7 +6,7 @@
         <div class="max-w-7xl mx-auto">
             <x-button class="px-5" as="a" href="{{ route('tenant.forms.create') }}">New form</x-button>
 
-                @foreach($forms as $form)
+                @foreach(formEntries as $form)
                 <div class="block mt-8 rounded-lg shadow overflow-hidden">
                     <div class="bg-white p-6">
                         <a href="{{ route('tenant.forms.show', $form->id) }}">
