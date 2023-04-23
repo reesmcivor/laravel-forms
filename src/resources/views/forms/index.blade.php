@@ -20,7 +20,7 @@
                         <form method="POST" action="{{ route('tenant.forms.destroy', $form->id) }}">
                             @csrf
                             @method('DELETE')
-                            <x-button variant="secondary" type="submit" href="{{ route('tenant.forms.index') }}">Cancel</x-button>
+                            <x-button variant="secondary" type="submit">Delete</x-button>
                         </form>
                     </div>
                 </div>
