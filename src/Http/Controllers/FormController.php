@@ -46,8 +46,8 @@ class FormController extends Controller
             'question' => 'What is your favourite colour?',
             'required' => true,
         ]);
-        
-        $question->choices()->create([
+
+        Choice::create([
             'choice' => 'Blue',
         ]);
 
