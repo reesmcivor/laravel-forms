@@ -5,9 +5,11 @@ namespace ReesMcIvor\Forms\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use ReesMcIvor\Forms\Models\Choice;
+use ReesMcIvor\Forms\Models\ChoiceAnswer;
 use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
+use ReesMcIvor\Forms\Models\QuestionAnswer;
 
 class FormController extends Controller
 {
@@ -94,7 +96,15 @@ class FormController extends Controller
 
         foreach($request->get('question') as $questionId => $questionAnswer)
         {
-
+            $question = Question::find($questionId);
+            if($question->type == "select") {
+                QuestionAnswer::create([
+                    'form_entry_id' => $formEntry->id,
+                    'question_id' => $question->id,
+                    'answerable_id' => $questionAnswer,
+                    'answerable_type' => ChoiceAnswer::class,
+                ]);
+            }
         }
     }
 }
