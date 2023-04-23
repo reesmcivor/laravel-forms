@@ -34,7 +34,6 @@
 
                                         $answers = $question->questionAnswers->map(function($answer) {
                                             dd($answer?->answerable?->choice?->choice);
-                                            return $answer->answerable->choice->choice;
                                         })->toArray();
 
                                         print_r($answers);
