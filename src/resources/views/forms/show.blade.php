@@ -27,7 +27,7 @@
 
                             @if($question->type == "select")
                                 <select name="" id="" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 placeholder-gray-400 rounded-md shadow-sm mt-1 block w-full @error('description') border-red-500 @enderror">
-                                    @foreach($question->options as $option)
+                                    @foreach($question->choices as $option)
                                         <option value="{{ $option->option }}">{{ $option->option }}</option>
                                     @endforeach
                                 </select>
