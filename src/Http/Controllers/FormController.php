@@ -86,7 +86,7 @@ class FormController extends Controller
 
     public function submit(Form $form)
     {
-        FormEntry::firstOrCreate([
+        $formEntry = FormEntry::firstOrCreate([
             'user_id' => auth()->user()->id,
             'form_id' => $form->id,
         ]);
