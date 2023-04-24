@@ -12,7 +12,11 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->enum('type', ['text', 'textarea', 'select', 'date', 'number']);
+            $table->integer('min_required')->default(1);
+            $table->integer('max_required')->default(1);
+            $table->boolean('required')->default(false);
+            $table->boolean('allow_multiple')->default(false);
+            $table->enum('type', ['text', 'textarea', 'select','date', 'number']);
             $table->timestamps();
         });
     }

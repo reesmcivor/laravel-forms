@@ -2,6 +2,7 @@
 
 namespace ReesMcIvor\Forms\Http\Controllers;
 
+use Faker\Provider\Text;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use ReesMcIvor\Forms\Models\Choice;
@@ -10,6 +11,7 @@ use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
 use ReesMcIvor\Forms\Models\QuestionAnswer;
+use ReesMcIvor\Forms\Models\TextAnswer;
 
 class FormController extends Controller
 {
@@ -92,17 +94,40 @@ class FormController extends Controller
         return redirect()->route('tenant.forms.index');
     }
 
-    public function submit(Form $form, Request $request)
+    public function submit(FormEntry $formEntry, Request $request)
     {
-        $formEntry = FormEntry::firstOrCreate([
-            'user_id' => auth()->user()->id,
-            'form_id' => $form->id,
-        ]);
-
         foreach($request->get('question') as $questionId => $questionAnswerId)
         {
             $question = Question::find($questionId);
-            if($question->type == "select") {
+
+            if($question->type == "text") {
+
+                TextAnswer::where('form_entry_id', $formEntry->id)->where('question_id', $questionId)->delete();
+
+                QuestionAnswer
+                    ::where('form_entry_id', $formEntry->id)
+                    ->where('question_id', $questionId)
+                    ->delete();
+
+                QuestionAnswer::create([
+                    'form_entry_id' => $formEntry->id,
+                    'question_id' => $question->id,
+                    'answerable_id' => TextAnswer::create([
+                        "form_entry_id" => $formEntry->id,
+                        "question_id" => $question->id,
+                        "answer" => $questionAnswerId
+                    ])->id,
+                    'answerable_type' => TextAnswer::class,
+                ]);
+            }
+
+            if($question->type == "select" && $questionAnswerId) {
+
+                QuestionAnswer
+                    ::where('form_entry_id', $formEntry->id)
+                    ->where('question_id', $questionId)
+                    ->delete();
+
                 QuestionAnswer::create([
                     'form_entry_id' => $formEntry->id,
                     'question_id' => $question->id,
@@ -111,5 +136,6 @@ class FormController extends Controller
                 ]);
             }
         }
+        return redirect()->back();
     }
 }
