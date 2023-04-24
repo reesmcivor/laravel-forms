@@ -12,7 +12,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\ReesMcIvor\Forms\Models\Form::class);
-            $table->boolean('is_complete')->default(false);
+            $table->float('percentage_complete')->default(0);
+            $table->boolean('complete')->default(false);
             $table->timestamps();
         });
     }
