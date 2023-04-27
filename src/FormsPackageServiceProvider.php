@@ -19,6 +19,10 @@ class FormsPackageServiceProvider extends ServiceProvider
             ], 'reesmcivor-forms');
         }
 
+        $this->commands([
+            \ReesMcIvor\Forms\Console\Commands\SeedForms::class,
+        ]);
+
         $this->loadRoutesFrom(__DIR__.'/routes/tenant.php');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'forms');
     }

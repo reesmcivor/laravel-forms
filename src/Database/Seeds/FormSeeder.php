@@ -3,11 +3,14 @@
 namespace ReesMcIvor\Forms\Database\Seeds;
 
 use Illuminate\Database\Seeder;
+use ReesMcIvor\Forms\Models\Form;
 
 class FormSeeder extends Seeder
 {
     public function run(): void
     {
-        dd('got here');
+        Form::factory()->create([
+            'name' => 'Consultation Form'
+        ]);
     }
 }

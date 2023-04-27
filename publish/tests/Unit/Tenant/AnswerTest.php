@@ -10,7 +10,7 @@ use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
 use ReesMcIvor\Forms\Models\QuestionAnswer;
-use ReesMcIvor\Forms\Models\TextAnswer;
+use ReesMcIvor\Forms\Models\VarcharAnswer;
 use Tests\TenantTestCase;
 
 class AnswerTest extends TenantTestCase {
@@ -30,14 +30,14 @@ class AnswerTest extends TenantTestCase {
         $question = Question::factory()->create(['type' => 'text']);
         $question->forms()->attach($form);
 
-        $answer = TextAnswer::create([ "question_id" => $question->id,  "answer" => "Test Answer"]);
+        $answer = VarcharAnswer::create([ "question_id" => $question->id,  "answer" => "Test Answer"]);
 
         if($question->type == "text") {
             QuestionAnswer::create([
                 'form_entry_id' => $formEntry->id,
                 'question_id' => $question->id,
                 'answerable_id' => $answer->id,
-                'answerable_type' => TextAnswer::class,
+                'answerable_type' => VarcharAnswer::class,
             ]);
         }
 

@@ -3,16 +3,16 @@
 namespace ReesMcIvor\Forms\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use ReesMcIvor\Forms\Models\VarcharAnswer;
+use ReesMcIvor\Forms\Models\DateAnswer;
 
-class ChoiceAnswerFactory extends Factory
+class DateAnswerFactory extends Factory
 {
-    protected $model = VarcharAnswer::class;
+    protected $model = DateAnswer::class;
 
     public function definition()
     {
         return [
-            'choice_id' => Choice::factory()->create(),
+            'answer' => $this->faker->dateTimeWithTimezone,
         ];
     }
 }

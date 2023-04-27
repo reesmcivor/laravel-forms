@@ -4,17 +4,20 @@ namespace ReesMcIvor\Forms\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ReesMcIvor\Forms\Database\Factories\VarcharAnswerFactory;
+use ReesMcIvor\Forms\Database\Factories\DateAnswerFactory;
 
-class TextAnswer extends Model
+class DateAnswer extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $casts = [
+        'answer' => 'datetime',
+    ];
 
     protected static function newFactory()
     {
-        return VarcharAnswerFactory::new();
+        return DateAnswerFactory::new();
     }
 
     public function questionAnswer()

@@ -5,7 +5,7 @@ namespace ReesMcIvor\Forms\Database\Factories;
 use ReesMcIvor\Forms\Models\Form;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use ReesMcIvor\Forms\Models\Question;
-use ReesMcIvor\Forms\Models\TextAnswer;
+use ReesMcIvor\Forms\Models\VarcharAnswer;
 use Tests\Forms\Unit\Tenant\AnswerTest;
 
 class QuestionFactory extends Factory

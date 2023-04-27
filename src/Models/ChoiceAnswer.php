@@ -4,7 +4,7 @@ namespace ReesMcIvor\Forms\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ReesMcIvor\Forms\Database\Factories\TextAnswerFactory;
+use ReesMcIvor\Forms\Database\Factories\VarcharAnswerFactory;
 
 class ChoiceAnswer extends Model
 {

@@ -11,18 +11,18 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('text_answers', function (Blueprint $table) {
+        Schema::create('date_answers', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(FormEntry::class);
             $table->foreignIdFor(Question::class);
-            $table->text('answer');
+            $table->dateTimeTz('answer');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('text_answers');
+        Schema::dropIfExists('date_answers');
     }
 };
 

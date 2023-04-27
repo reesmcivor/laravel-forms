@@ -18,13 +18,15 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 |
 */
 
-
 Route::middleware('tenant', PreventAccessFromCentralDomains::class)->name('tenant.')->group(function () {
 
     Route::middleware(['auth', CheckSubscription::class])->group(function () {
         Route::middleware(OwnerOnly::class)->group(function () {
-            Route::resource('forms', Controllers\FormController::class);
-            Route::post('forms/{formEntry}/submit', [Controllers\FormController::class, 'submit'])->name('forms.submit');
+
+            Route::resource('form-entry', Controllers\FormEntryController::class);
+            Route::post('form-entry/{formEntry}/submit', [Controllers\FormEntryController::class, 'submit'])->name('form-entry.submit');
+            Route::get('forms/demo/create', [Controllers\DemoController::class, 'create'])->name('forms.demo.create');
+
         });
     });
 

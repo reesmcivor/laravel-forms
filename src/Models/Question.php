@@ -35,4 +35,15 @@ class Question extends Model
     {
         return $this->hasMany(QuestionAnswer::class);
     }
+
+    public function getValidationRules(): array
+    {
+        if ($this->required) {
+            $rules['question.' . $this->id] = 'required';
+        }
+        if($this->validation) {
+            $rules['question.' . $this->id] .= '|' . $this->validation;
+        }
+        return $rules;
+    }
 }
