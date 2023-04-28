@@ -3,6 +3,7 @@
 namespace ReesMcIvor\Forms\Console\Commands;
 
 use Illuminate\Console\Command;
+use ReesMcIvor\Forms\Models\Choice;
 use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
@@ -17,6 +18,7 @@ class SeedForms extends Command {
     public function run(InputInterface $input, OutputInterface $output): int
     {
 
+        FormEntry::get()->each(fn($item) => $item->delete());
         Form::all()->each(fn($item) => $item->delete());
 
         $form = Form::create([
@@ -35,6 +37,12 @@ class SeedForms extends Command {
         $questions[] = Question::create([ 'type' => 'varchar', 'question' => 'What is your email?', 'required' => true, 'validation' => 'email' ]);
         $questions[] = Question::create([ 'type' => 'date', 'question' => 'DOB?', 'required' => true, 'validation' => 'date' ]);
         $questions[] = Question::create([ 'type' => 'text', 'question' => 'Describe yourself?', 'required' => true, 'validation' => 'min:10' ]);
+
+        $questions[] = $favourteColourQuestion = Question::factory()->create(['question' => 'What is your favourite color?', 'type' => 'select']);
+
+        
+        Choice::factory()->create(['question_id' => $favourteColourQuestion->id, 'choice' => 'Blue']);
+        Choice::factory()->create(['question_id' => $favourteColourQuestion->id, 'choice' => 'Red']);
 
         collect($questions)->each(fn($question) => $form->questions()->attach($question));
 

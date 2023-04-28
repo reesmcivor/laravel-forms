@@ -44,6 +44,6 @@ class Question extends Model
         if($this->validation) {
             $rules['question.' . $this->id] .= '|' . $this->validation;
         }
-        return $rules;
+        return $rules ?? ['question.' . $this->id => 'sometimes'];
     }
 }
