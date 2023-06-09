@@ -1,5 +1,5 @@
 {
-    "name": "reesmcivor/forms",
+    "name": "reesmcivor/laravel-forms",
     "description": "Laravel flexible forms",
     "type": "library",
     "license": "MIT",
