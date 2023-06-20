@@ -6,6 +6,9 @@ use Faker\Provider\Text;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Laravel\Nova\Fields\Date;
 use ReesMcIvor\Forms\Models\Choice;
 use ReesMcIvor\Forms\Models\ChoiceAnswer;
@@ -23,6 +26,7 @@ class FormEntryController extends Controller
 
     public function index()
     {
+        Artisan::call("accounts:create:form");
         //FormEntry::all()->each(fn($item) => $item->delete());
         //FormEntry::create(['form_id' => 1, 'user_id' => 1]);
         $formEntries = FormEntry::mine()->with('form')->has('form')->paginate(10);
@@ -42,40 +46,8 @@ class FormEntryController extends Controller
         return redirect()->route('tenant.form-entry.index');
     }
 
-    public function show(FormEntry $formEntry)
+    public function show(Request $request, FormEntry $formEntry)
     {
-
-        /*
-        Question::all()->each(fn($question) => $question->delete());
-
-        $form->questions()->attach(
-            Question::create([
-                'type' => 'text',
-                'question' => 'What is your name?',
-                'required' => true,
-            ])
-        );
-
-        $question = Question::create([
-            'type' => 'select',
-            'question' => 'What is your favourite colour?',
-            'required' => true,
-        ]);
-
-        Choice::create([
-            'question_id' => $question->id,
-            'choice' => 'Blue',
-        ]);
-        Choice::create([
-            'question_id' => $question->id,
-            'choice' => 'Red',
-        ]);
-
-
-        $form->questions()->attach($question);
-        */
-
-
         return view('forms::form-entry.show', [
             'formEntry' => $formEntry,
         ]);
@@ -100,11 +72,29 @@ class FormEntryController extends Controller
         return redirect()->route('tenant.form-entry.index');
     }
 
-    public function submit(FormEntryRequest $request, FormEntry $formEntry)
+    public function submit(Request $request, FormEntry $formEntry)
     {
+
+
+        $formEntry = FormEntry::find($request->get('form_entry_id'));
+        $validator = Validator::make( $request->all(), $formEntry->form->getValidationRules(), [], [
+            'question.168' => 'SDFKHDSFJGSDF'
+        ]);
+        $errors = $validator->errors()->toArray();
+
+
+
+
+
+
 
         foreach($request->get('question') as $questionId => $questionAnswerId)
         {
+
+            if(isset($errors['question.' . $questionId])) {
+                continue;
+            }
+
             $question = Question::find($questionId);
             QuestionAnswer::where('form_entry_id', $formEntry->id)->where('question_id', $questionId)->delete();
 
@@ -119,18 +109,21 @@ class FormEntryController extends Controller
                 ]);
             }
 
-            if($question->type == "varchar") {
-                VarcharAnswer::where('form_entry_id', $formEntry->id)->where('question_id', $questionId)->delete();
-                $answerableId = VarcharAnswer::create(["form_entry_id" => $formEntry->id, "question_id" => $question->id, "answer" => $questionAnswerId])->id;
-                QuestionAnswer::create([
-                    'form_entry_id' => $formEntry->id,
-                    'question_id' => $question->id,
-                    'answerable_id' => $answerableId,
-                    'answerable_type' => VarcharAnswer::class,
-                ]);
+            if($question->type == "varchar" && $questionAnswerId) {
+                try {
+                    VarcharAnswer::where('form_entry_id', $formEntry->id)->where('question_id', $questionId)->delete();
+                    $answerableId = VarcharAnswer::create(["form_entry_id" => $formEntry->id, "question_id" => $question->id, "answer" => $questionAnswerId])->id;
+                    QuestionAnswer::create([
+                        'form_entry_id' => $formEntry->id,
+                        'question_id' => $question->id,
+                        'answerable_id' => $answerableId,
+                        'answerable_type' => VarcharAnswer::class,
+                    ]);
+                } catch (\Exception $e) {
+                }
             }
 
-            if($question->type == "date") {
+            if($question->type == "date" && $questionAnswerId) {
                 DateAnswer::where('form_entry_id', $formEntry->id)->where('question_id', $questionId)->delete();
                 QuestionAnswer::create([
                     'form_entry_id' => $formEntry->id,
@@ -153,6 +146,9 @@ class FormEntryController extends Controller
                 ]);
             }
         }
-        return redirect()->back()->with('success', sprintf('Your "%s" has been saved.', $formEntry->form->name));
+
+        $request->validate($formEntry->form->getValidationRules());
+
+        return redirect()->back()->withErrors($validator->errors())->withInput();
     }
 }

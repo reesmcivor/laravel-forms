@@ -4,6 +4,7 @@ namespace ReesMcIvor\Forms\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use ReesMcIvor\Forms\Database\Factories\FormFactory;
 
 class Form extends Model
@@ -17,8 +18,19 @@ class Form extends Model
         return FormFactory::new();
     }
 
-    public function questions()
+    public function groups() : HasMany
     {
-        return $this->belongsToMany(Question::class);
+        return $this->hasMany(Group::class);
+    }
+
+    public function getValidationRules() : array
+    {
+        $rules = [];
+        foreach($this->groups as $group) {
+            foreach($group->questions as $question) {
+                $rules += $question->getValidationRules();
+            }
+        }
+        return $rules;
     }
 }

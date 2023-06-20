@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use ReesMcIvor\Forms\Models\Choice;
 use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
+use ReesMcIvor\Forms\Models\Group;
 use ReesMcIvor\Forms\Models\Question;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -18,33 +19,36 @@ class SeedForms extends Command {
     public function run(InputInterface $input, OutputInterface $output): int
     {
 
-        FormEntry::get()->each(fn($item) => $item->delete());
-        Form::all()->each(fn($item) => $item->delete());
+        if(!Form::where('name', 'New Account Form')->exists()) {
+            Form::create(['name' => 'New Account Form', 'description' => 'Setup an account with us']);
+        }
 
-        $form = Form::create([
-            'name' => 'Consultation Form',
-            'user_id' => 1,
-            'description' => 'This is a test form'
-        ]);
+        $form = Form::where('name', 'New Account Form')->first();
+        if(!$form->groups->count()) {
+            $form->groups()->create([
+                'name' => 'Step 1',
+                'description' => 'Personal Information',
+                'group_id' => 0,
+                'sort_order' => 1
+            ]);
+            $form->groups()->create([
+                'name' => 'Step 2',
+                'description' => 'Address Information',
+                'group_id' => 0,
+                'sort_order' => 2
+            ]);
+        }
 
-        FormEntry::create([
-            'form_id' => $form->id,
-            'user_id' => 1
-        ]);
+        if(!Question::where('question', 'Name')->exists()) {
+            Question::create([ 'type' => 'varchar',  'question' => 'Name',  'required' => true ]);
+            Group::where('name', 'Step 1')->first()->questions()->attach(Question::where('question', 'Name')->first());
+        }
 
-        $questions = [];
-        $questions[] = Question::create([ 'type' => 'varchar',  'question' => 'What is your name?',  'required' => true ]);
-        $questions[] = Question::create([ 'type' => 'varchar', 'question' => 'What is your email?', 'required' => true, 'validation' => 'email' ]);
-        $questions[] = Question::create([ 'type' => 'date', 'question' => 'DOB?', 'required' => true, 'validation' => 'date' ]);
-        $questions[] = Question::create([ 'type' => 'text', 'question' => 'Describe yourself?', 'required' => true, 'validation' => 'min:10' ]);
+        if(!Question::where('question', 'Address Line 1')->exists()) {
+            Question::create([ 'type' => 'varchar',  'question' => 'Address Line 1',  'required' => true ]);
+            Group::where('name', 'Step 2')->first()->questions()->attach(Question::where('question', 'Address Line 1')->first());
+        }
 
-        $questions[] = $favourteColourQuestion = Question::factory()->create(['question' => 'What is your favourite color?', 'type' => 'select']);
-
-        
-        Choice::factory()->create(['question_id' => $favourteColourQuestion->id, 'choice' => 'Blue']);
-        Choice::factory()->create(['question_id' => $favourteColourQuestion->id, 'choice' => 'Red']);
-
-        collect($questions)->each(fn($question) => $form->questions()->attach($question));
 
         return Command::SUCCESS;
 

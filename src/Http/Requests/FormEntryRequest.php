@@ -3,6 +3,7 @@
 namespace ReesMcIvor\Forms\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
 
@@ -17,9 +18,25 @@ class FormEntryRequest extends FormRequest
         return auth()?->user()?->id == $this->formEntry->user_id ? true : false;
     }
 
+
     public function rules(): array
     {
-        $validationRules =  $this->formEntry->form->questions->mapWithKeys(fn(Question $question) => $question->getValidationRules())->toArray();
-        return $validationRules;
+        $rules = [];
+        foreach($this->formEntry->form->groups as $group) {
+            foreach($group->questions as $question) {
+                array_merge($rules, $question->getValidationRules());
+            }
+        }
+        return $rules;
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'question' => [
+                141 => 'Test ksdhfkjhsdfsf'
+            ]
+        ];
     }
 }
+
