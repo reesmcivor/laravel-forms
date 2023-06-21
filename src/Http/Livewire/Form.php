@@ -31,6 +31,8 @@ class Form extends Component
         $this->currentGroup = $this->groups->get($index);
         $this->nextGroup = $this->groups->get($index + 1);
         $this->currentGroupIndex = $index;
+        // Refresh component with children
+        $this->emit('$refresh');
     }
 
     public function submit()

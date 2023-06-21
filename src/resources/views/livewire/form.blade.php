@@ -1,12 +1,6 @@
 <div class="block mt-8 mb-20 rounded-lg shadow overflow-hidden bg-white">
-    <div class="bg-white p-6">
-        <div class="text-xl font-semibold text-gray-900">
-            {{ $this->currentGroup->name }}
-        </div>
-        <p class="mt-3 text-base text-gray-500">
-            {{ $this->currentGroup->description }}
-        </p>
-    </div>
+
+    @livewire('forms.step', ['group' => $currentGroup, 'formEntry' => $formEntry], key($currentGroup->id))
 
     <div class="grid grid-flow-row-dense grid-cols-2">
         @foreach($this->currentGroup->questions as $question)
@@ -14,7 +8,6 @@
                 <div class="">
                     <div class="bg-white p-6">
 
-                        <x-input :label="$question->label" :description="$question->description" />
 
 
 

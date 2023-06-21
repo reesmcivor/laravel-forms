@@ -37,7 +37,7 @@ class FormsPackageServiceProvider extends ServiceProvider
         Livewire::component('forms.question.text', \ReesMcIvor\Forms\Http\Livewire\Question\Text::class);
         Livewire::component('forms.question.date', \ReesMcIvor\Forms\Http\Livewire\Question\Date::class);
         Livewire::component('forms.question.select', \ReesMcIvor\Forms\Http\Livewire\Question\Select::class);
-        Livewire::component('forms.form.group', \ReesMcIvor\Forms\Http\Livewire\Form\Group::class);
+        Livewire::component('forms.step', \ReesMcIvor\Forms\Http\Livewire\Step::class);
     }
 
     public function map()

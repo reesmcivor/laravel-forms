@@ -7,7 +7,7 @@ use Livewire\Component;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Group;
 
-class FormGroup extends Component
+class Step extends Component
 {
     public FormEntry $formEntry;
 
@@ -40,6 +40,6 @@ class FormGroup extends Component
 
     public function render()
     {
-        return view('forms::livewire.form');
+        return view('forms::livewire.step');
     }
 }
