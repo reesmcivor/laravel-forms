@@ -12,15 +12,21 @@ class Form extends Component
     public FormEntry $formEntry;
 
     public Collection $groups;
+
+
     public Group $currentGroup;
     public Group|null $previousGroup;
     public Group|null $nextGroup;
     public int $currentGroupIndex = 0;
 
+    protected $listeners = [
+        'navigateToGroup' => 'navigateToGroup',
+    ];
+
     public function mount(FormEntry $formEntry = null)
     {
         $this->formEntry = $formEntry;
-        $this->groups = $this->formEntry->form->groups;
+        $this->groups = $this->formEntry->form->steps;
         $this->navigateToGroup($this->currentGroupIndex);
     }
 
@@ -28,11 +34,9 @@ class Form extends Component
     {
         $this->submit();
         $this->previousGroup = $this->groups->get($index - 1);
-        $this->currentGroup = $this->groups->get($index);
+        $this->currentGroup = Group::find($this->groups->get($index)->id)->with('children')->get()->first();
         $this->nextGroup = $this->groups->get($index + 1);
         $this->currentGroupIndex = $index;
-        // Refresh component with children
-        $this->emit('$refresh');
     }
 
     public function submit()

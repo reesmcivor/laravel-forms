@@ -18,6 +18,12 @@ class Form extends Model
         return FormFactory::new();
     }
 
+    public function steps() : HasMany
+    {
+        return $this->hasMany(Group::class)
+            ->where('group_id', 0);
+    }
+
     public function groups() : HasMany
     {
         return $this->hasMany(Group::class);

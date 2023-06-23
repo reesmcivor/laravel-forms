@@ -16,11 +16,16 @@ return new class extends Migration
             $table->boolean('complete')->default(false);
             $table->timestamps();
         });
+
+        Schema::table('form_entries', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('form_id')->references('id')->on('forms');
+        });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('form_entries');
     }
 };
 

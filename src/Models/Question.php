@@ -14,13 +14,9 @@ class Question extends Model
 
     protected $guarded = ['id'];
 
-    const TYPE_TEXT = AnswerTest::class;
-    const TYPE_CHOICE = 'choice';
-
     public static function boot()
     {
         parent::boot();
-
         static::saving(function ($question) {
             $question->label = $question->label ?? $question->question;
             $question->slug = $question->slug ?? Str::slug($question->label);
@@ -52,4 +48,5 @@ class Question extends Model
         $rules = $this->getAttribute('validation') ?? ($this->required ? 'required' : 'sometimes');
         return ["question.{$this->id}" => $rules];
     }
+
 }

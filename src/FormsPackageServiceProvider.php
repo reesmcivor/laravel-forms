@@ -19,6 +19,7 @@ class FormsPackageServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../database/migrations/tenant' => database_path($migrationPath),
                 __DIR__ . '/../publish/tests' => base_path('tests/Forms'),
+                __DIR__ . '/../publish/config' => base_path('config'),
             ], 'reesmcivor-forms');
         }
 

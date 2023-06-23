@@ -39,4 +39,5 @@ Route::middleware(['web'])->group(function () {
     Route::any('form-entry/{formEntry}/submit', [\ReesMcIvor\Forms\Http\Controllers\FormEntryController::class, 'submit'])->name('form-entry.submit');
     //Route::any('form-entry/{formEntry:id}/submit', [\ReesMcIvor\Forms\Http\Controllers\FormEntryController::class, 'submit'])->name('form-entry.submit');
     Route::get('forms/demo/create', [Controllers\DemoController::class, 'create'])->name('forms.demo.create');
+    Route::get('form-entry/{formEntry}/thank-you', Controllers\ThankYouController::class)->name('form-entry.thank-you');
 });

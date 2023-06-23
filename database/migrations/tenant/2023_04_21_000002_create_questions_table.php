@@ -18,9 +18,10 @@ return new class extends Migration
             $table->integer('min_required')->default(1);
             $table->integer('max_required')->default(1);
             $table->boolean('required')->default(false);
+            $table->boolean('show_label')->default(true);
             $table->boolean('allow_multiple')->default(false);
             $table->string('validation')->nullable();
-            $table->enum('type', ['varchar', 'text', 'select', 'date', 'number']);
+            $table->enum('type', ['varchar', 'text', 'select', 'date', 'number', 'boolean']);
             $table->timestamps();
         });
     }

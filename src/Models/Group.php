@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Group extends Model
 {
@@ -20,8 +21,8 @@ class Group extends Model
         return $this->belongsToMany(Question::class, 'question_groups');
     }
 
-    public function children()
+    public function children() : HasMany
     {
-        return $this->hasMany(Group::class, 'parent_id');
+        return $this->hasMany(Group::class, 'group_id')->with('children');
     }
 }
