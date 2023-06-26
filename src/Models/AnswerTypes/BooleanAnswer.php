@@ -1,12 +1,12 @@
 <?php
 
-namespace ReesMcIvor\Forms\Models;
+namespace ReesMcIvor\Forms\Models\AnswerTypes;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\BooleanFactory;
+use ReesMcIvor\Forms\Models\Answer;
 
-class BooleanAnswer extends Model
+class BooleanAnswer extends Answer
 {
     use HasFactory;
 
@@ -20,8 +20,4 @@ class BooleanAnswer extends Model
         return BooleanFactory::new();
     }
 
-    public function questionAnswer()
-    {
-        return $this->morphOne(QuestionAnswer::class, 'answerable');
-    }
 }

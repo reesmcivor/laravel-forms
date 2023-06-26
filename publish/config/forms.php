@@ -3,11 +3,11 @@
 return [
     'field' => [
         'types' => [
-            'varchar' => ReesMcIvor\Forms\Models\VarcharAnswer::class,
-            'text' => ReesMcIvor\Forms\Models\TextAnswer::class,
-            'boolean' => ReesMcIvor\Forms\Models\BooleanAnswer::class,
-            'select' => ReesMcIvor\Forms\Models\ChoiceAnswer::class,
-            'date' => ReesMcIvor\Forms\Models\VarcharAnswer::class
+            'varchar' => ReesMcIvor\Forms\Models\AnswerTypes\VarcharAnswer::class,
+            'text' => ReesMcIvor\Forms\Models\AnswerTypes\TextAnswer::class,
+            'boolean' => ReesMcIvor\Forms\Models\AnswerTypes\BooleanAnswer::class,
+            'select' => ReesMcIvor\Forms\Models\AnswerTypes\ChoiceAnswer::class,
+            'date' => ReesMcIvor\Forms\Models\AnswerTypes\VarcharAnswer::class
         ]
     ]
 ];

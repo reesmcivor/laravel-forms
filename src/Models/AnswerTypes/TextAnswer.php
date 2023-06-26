@@ -1,12 +1,12 @@
 <?php
 
-namespace ReesMcIvor\Forms\Models;
+namespace ReesMcIvor\Forms\Models\AnswerTypes;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\VarcharAnswerFactory;
+use ReesMcIvor\Forms\Models\Answer;
 
-class VarcharAnswer extends Model
+class TextAnswer extends Answer
 {
     use HasFactory;
 
@@ -17,8 +17,4 @@ class VarcharAnswer extends Model
         return VarcharAnswerFactory::new();
     }
 
-    public function questionAnswer()
-    {
-        return $this->morphOne(QuestionAnswer::class, 'answerable');
-    }
 }

@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\FormEntryFactory;
+use function Aws\map;
 
 class FormEntry extends Model
 {
@@ -35,10 +36,14 @@ class FormEntry extends Model
     public function saveAnswers( FormEntry $formEntry, $questions = [])
     {
 
-
+        $fieldTypes = config('forms.field.types');
         foreach($questions as $questionId => $answer) {
 
             $question = Question::find($questionId);
+
+
+            $fieldType = $fieldTypes[$question->type] ?? null;
+
 
             if (!is_array($answer)) {
                 QuestionAnswer::where('form_entry_id', $formEntry->id)
@@ -47,7 +52,8 @@ class FormEntry extends Model
             }
 
             if ($question->type == "varchar") {
-
+                app($fieldType)->saveAnswer($formEntry, $question, $answer);
+            } elseif ($question->type == "date") {
                 $answerableId = VarcharAnswer::updateOrCreate([
                     "form_entry_id" => $formEntry->id,
                     "question_id" => $questionId
@@ -59,30 +65,6 @@ class FormEntry extends Model
                     'answerable_id' => $answerableId,
                     'answerable_type' => VarcharAnswer::class,
                 ]);
-            } elseif ($question->type == "date") {
-                    $answerableId = VarcharAnswer::updateOrCreate([
-                        "form_entry_id" => $formEntry->id,
-                        "question_id" => $questionId
-                    ], ["answer" => $answer])->id;
-
-                    QuestionAnswer::create([
-                        'form_entry_id' => $formEntry->id,
-                        'question_id' => $questionId,
-                        'answerable_id' => $answerableId,
-                        'answerable_type' => VarcharAnswer::class,
-                    ]);
-            } elseif($question->type == "text") {
-                $answerableId = TextAnswer::updateOrCreate([
-                    "form_entry_id" => $formEntry->id,
-                    "question_id" => $questionId
-                ], ["answer" => $answer])->id;
-
-                QuestionAnswer::create([
-                    'form_entry_id' => $formEntry->id,
-                    'question_id' => $questionId,
-                    'answerable_id' => $answerableId,
-                    'answerable_type' => TextAnswer::class,
-                ]);
             } elseif($question->type == "select") {
                 QuestionAnswer::where(['form_entry_id' => $formEntry->id, 'question_id' => $question->id ])->delete();
                 QuestionAnswer::updateOrCreate([
@@ -92,20 +74,8 @@ class FormEntry extends Model
                     'answerable_id' => ChoiceAnswer::create([ "question_id" => $question->id,  "choice_id" => $answer])->id,
                     'answerable_type' => ChoiceAnswer::class,
                 ]);
-            } elseif($question->type == "boolean") {
-                $answerableId = BooleanAnswer::updateOrCreate([
-                    "form_entry_id" => $formEntry->id,
-                    "question_id" => $questionId
-                ], ["answer" => $answer])->id;
-
-                QuestionAnswer::updateOrCreate([
-                    'form_entry_id' => $formEntry->id,
-                    'question_id' => $question->id
-                ], [
-                    'answerable_id' => $answerableId,
-                    'answerable_type' => BooleanAnswer::class,
-                ]);
             }
+
         }
 
 

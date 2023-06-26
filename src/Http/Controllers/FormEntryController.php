@@ -26,10 +26,11 @@ class FormEntryController extends Controller
 
     public function index()
     {
-        Artisan::call("accounts:create:form");
+        //Artisan::call("accounts:create:form");
         //FormEntry::all()->each(fn($item) => $item->delete());
         //FormEntry::create(['form_id' => 1, 'user_id' => 1]);
         $formEntries = FormEntry::mine()->with('form')->has('form')->paginate(10);
+
         return view('forms::form-entry.index', [
             'formEntries' => $formEntries,
         ]);

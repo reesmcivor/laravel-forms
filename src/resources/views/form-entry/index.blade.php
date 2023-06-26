@@ -4,8 +4,8 @@
         <div class="max-w-7xl mx-auto">
 
 
-                @foreach($formEntries as $formEntry)
-                    @php $form = $formEntry->form; @endphp
+            @foreach($formEntries as $formEntry)
+                @php $form = $formEntry->form; @endphp
                 <div class="block mt-8 rounded-lg shadow overflow-hidden">
                     <div class="bg-white p-6">
                         <a href="{{ route('form-entry.show', $form->id) }}">
