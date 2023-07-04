@@ -4,6 +4,7 @@ namespace ReesMcIvor\Forms\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use ReesMcIvor\Forms\Database\Factories\FormEntryFactory;
 use function Aws\map;
 
@@ -53,18 +54,6 @@ class FormEntry extends Model
 
             if ($question->type == "varchar") {
                 app($fieldType)->saveAnswer($formEntry, $question, $answer);
-            } elseif ($question->type == "date") {
-                $answerableId = VarcharAnswer::updateOrCreate([
-                    "form_entry_id" => $formEntry->id,
-                    "question_id" => $questionId
-                ], ["answer" => $answer])->id;
-
-                QuestionAnswer::create([
-                    'form_entry_id' => $formEntry->id,
-                    'question_id' => $questionId,
-                    'answerable_id' => $answerableId,
-                    'answerable_type' => VarcharAnswer::class,
-                ]);
             } elseif($question->type == "select") {
                 QuestionAnswer::where(['form_entry_id' => $formEntry->id, 'question_id' => $question->id ])->delete();
                 QuestionAnswer::updateOrCreate([

@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use ReesMcIvor\Forms\Database\Factories\FormFactory;
 
 class Form extends Model

@@ -3,7 +3,7 @@
 namespace ReesMcIvor\Forms\Http\LiveWire\Question;
 
 use ReesMcIvor\Forms\Http\Livewire\QuestionComponent;
-use ReesMcIvor\Forms\Models\VarcharAnswer;
+use ReesMcIvor\Forms\Models\AnswerTypes\VarcharAnswer;
 
 class VarChar extends QuestionComponent
 {

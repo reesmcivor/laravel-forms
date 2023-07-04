@@ -2,24 +2,17 @@
 
 namespace ReesMcIvor\Forms\Http\Controllers;
 
-use Faker\Provider\Text;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Nova\Fields\Date;
-use ReesMcIvor\Forms\Models\Choice;
-use ReesMcIvor\Forms\Models\ChoiceAnswer;
-use ReesMcIvor\Forms\Models\DateAnswer;
 use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
 use ReesMcIvor\Forms\Models\QuestionAnswer;
-use ReesMcIvor\Forms\Models\TextAnswer;
-use ReesMcIvor\Forms\Models\VarcharAnswer;
-use ReesMcIvor\Forms\Http\Requests\FormEntryRequest;
+use ReesMcIvor\Forms\Models\AnswerTypes\TextAnswer;
+use ReesMcIvor\Forms\Models\AnswerTypes\VarcharAnswer;
+use ReesMcIvor\Forms\Models\AnswerTypes\ChoiceAnswer;
+use ReesMcIvor\Forms\Models\AnswerTypes\DateAnswer;
 
 class FormEntryController extends Controller
 {

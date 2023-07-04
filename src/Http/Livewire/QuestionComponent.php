@@ -7,7 +7,6 @@ use ReesMcIvor\Forms\Models\DateAnswer;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
 use ReesMcIvor\Forms\Models\QuestionAnswer;
-use ReesMcIvor\Forms\Models\VarcharAnswer;
 
 class QuestionComponent extends Component
 {

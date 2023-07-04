@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms\Models\AnswerTypes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\DateAnswerFactory;
+use ReesMcIvor\Forms\Models\Answer;
 
 class DateAnswer extends Answer
 {

@@ -6,9 +6,7 @@ use ReesMcIvor\Forms\Http\Livewire\QuestionComponent;
 use ReesMcIvor\Forms\Models\DateAnswer;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
-use ReesMcIvor\Forms\Models\QuestionAnswer;
 use ReesMcIvor\Forms\Models\TextAnswer;
-use ReesMcIvor\Forms\Models\VarcharAnswer;
 
 class Date extends QuestionComponent
 {
