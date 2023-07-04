@@ -19,7 +19,7 @@ class Answer extends Model
             'form_entry_id' => $formEntry->id,
             'question_id' => $question->id,
             'answerable_id' => $answerableId,
-            'answerable_type' => VarcharAnswer::class,
+            'answerable_type' => get_class($this)
         ]);
     }
 

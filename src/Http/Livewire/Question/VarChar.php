@@ -7,7 +7,7 @@ use ReesMcIvor\Forms\Models\AnswerTypes\VarcharAnswer;
 
 class VarChar extends QuestionComponent
 {
-    protected $answerClass = VarcharAnswer::class;
+    public string $answerableClass = VarcharAnswer::class;
 
     public function updatedAnswer()
     {

@@ -75,6 +75,7 @@ class Step extends Component
             $this->validate($this->rules ?? []);
         }
         if($closeForm) {
+            $this->formEntry->complete();
             response()->redirectTo(route('form-entry.thank-you', $this->formEntry->id))
                 ->with('success', 'Form submitted successfully');
         }

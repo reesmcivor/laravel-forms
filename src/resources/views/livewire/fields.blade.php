@@ -5,13 +5,14 @@
         <div class="{{ $question->type == "text" ? "col-span-2" : "" }} px-5 py-2">
 
             @if($question->description)
-                <p class="text-sm text-gray-500">{{ $question->description }}</p>
+                <p class="text-sm text-gray-500">{!! $question->description !!}</p>
             @endif
 
             @if($question->type == 'varchar')
 
                 <x-form-input
-                    name="question.{{ $question->id }}" label="{{ $question->show_label ? $question->label : '' }}"
+                    name="question.{{ $question->id }}"
+                    label="{!! $question->show_label ? $question->label : '' !!}"
                     class="{{ config('form-components.components.form-input.classNames') }}"
                 />
 

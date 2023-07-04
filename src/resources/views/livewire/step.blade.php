@@ -3,7 +3,7 @@
     <div class="bg-white p-6">
 
         <div class="text-xl font-semibold text-gray-900">
-            {{ $this->group?->name }}
+            {!! $this->group?->name !!}
         </div>
         <p class="mt-3 text-base text-gray-500">
             {{ $this?->group?->description }}
@@ -16,15 +16,14 @@
 
                 @foreach($this->group?->children as $childGroup)
                     <div class="m-5 border bg-gray-200 p-4">
-
-                        {{ $childGroup->name }}
+                        {!! $childGroup->name !!}
                         @include('forms::livewire.fields', ['group' => $childGroup])
                     </div>
                 @endforeach
 
             @endwire
 
-            <div class="flex justify-center py-10">
+            <div class="flex justify-center py-10 space-x-5">
                 @if($this?->previousGroup ?? false)
                     <div class="flex">
                         <button

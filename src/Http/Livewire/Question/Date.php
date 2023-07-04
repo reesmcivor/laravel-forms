@@ -3,15 +3,13 @@
 namespace ReesMcIvor\Forms\Http\Livewire\Question;
 
 use ReesMcIvor\Forms\Http\Livewire\QuestionComponent;
-use ReesMcIvor\Forms\Models\DateAnswer;
+use ReesMcIvor\Forms\Models\AnswerTypes\DateAnswer;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
-use ReesMcIvor\Forms\Models\TextAnswer;
 
 class Date extends QuestionComponent
 {
-
-    protected $answerClass = DateAnswer::class;
+    public $answerClass = DateAnswer::class;
 
     public function mount(Question $question, FormEntry $formEntry = null)
     {

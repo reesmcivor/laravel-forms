@@ -4,9 +4,7 @@ namespace ReesMcIvor\Forms\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use ReesMcIvor\Forms\Database\Factories\FormEntryFactory;
-use function Aws\map;
 
 class FormEntry extends Model
 {
@@ -34,6 +32,11 @@ class FormEntry extends Model
         return $this->hasMany(QuestionAnswer::class);
     }
 
+    public function complete()
+    {
+        $this->setAttribute('completed_at', now())->save();
+    }
+
     public function saveAnswers( FormEntry $formEntry, $questions = [])
     {
 
@@ -41,32 +44,34 @@ class FormEntry extends Model
         foreach($questions as $questionId => $answer) {
 
             $question = Question::find($questionId);
-
-
             $fieldType = $fieldTypes[$question->type] ?? null;
 
-
             if (!is_array($answer)) {
-                QuestionAnswer::where('form_entry_id', $formEntry->id)
-                    ->where('question_id', $questionId)
-                    ->delete();
+                QuestionAnswer::where('form_entry_id', $formEntry->id)->where('question_id', $questionId)->delete();
             }
 
-            if ($question->type == "varchar") {
-                app($fieldType)->saveAnswer($formEntry, $question, $answer);
-            } elseif($question->type == "select") {
-                QuestionAnswer::where(['form_entry_id' => $formEntry->id, 'question_id' => $question->id ])->delete();
-                QuestionAnswer::updateOrCreate([
-                    'form_entry_id' => $formEntry->id,
-                    'question_id' => $question->id
-                ], [
-                    'answerable_id' => ChoiceAnswer::create([ "question_id" => $question->id,  "choice_id" => $answer])->id,
-                    'answerable_type' => ChoiceAnswer::class,
-                ]);
-            }
+            app($fieldType)->saveAnswer($formEntry, $question, $answer);
 
         }
+    }
 
-
+    public function populate( $values )
+    {
+        $fieldTypes = config('forms.field.types');
+        $groupsByForm = $this->form->groups->pluck('id', 'id')->toArray();
+        $questions = QuestionGroup::where('group_id', $groupsByForm)->get()->pluck('question_id', 'question_id')->toArray();
+        Question::whereIn('id', $questions)->get()->each(function($question) use ($values, $fieldTypes) {
+            if(isset($values[$question->slug])) {
+                $fieldType = $fieldTypes[$question->type] ?? null;
+                if($question->slug == "trading_address") {
+                    //dd()
+                    //dd($fieldType);
+                    //dd($values[$question->slug]);
+                } else {
+                    app($fieldType)->saveAnswer($this, $question, $values[$question->slug]);
+                }
+            }
+        });
     }
 }
+

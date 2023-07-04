@@ -3,7 +3,7 @@
 namespace ReesMcIvor\Forms\Models\AnswerTypes;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use ReesMcIvor\Forms\Database\Factories\VarcharAnswerFactory;
+use ReesMcIvor\Forms\Database\Factories\TextAnswerFactory;
 use ReesMcIvor\Forms\Models\Answer;
 
 class TextAnswer extends Answer
@@ -14,7 +14,7 @@ class TextAnswer extends Answer
 
     protected static function newFactory()
     {
-        return VarcharAnswerFactory::new();
+        return TextAnswerFactory::new();
     }
 
 }

@@ -3,12 +3,11 @@
 namespace ReesMcIvor\Forms\Http\Livewire\Question;
 
 use ReesMcIvor\Forms\Http\Livewire\QuestionComponent;
-use ReesMcIvor\Forms\Models\TextAnswer;
+use ReesMcIvor\Forms\Models\AnswerTypes\TextAnswer;
 
 class Text extends QuestionComponent
 {
-
-    protected $answerClass = TextAnswer::class;
+    public string $answerableClass = TextAnswer::class;
 
     public function updatedAnswer()
     {
