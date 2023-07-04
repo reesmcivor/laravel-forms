@@ -32,6 +32,11 @@ class FormEntry extends Model
         return $this->hasMany(QuestionAnswer::class);
     }
 
+    public function isComplete()
+    {
+        return $this->completed_at != null;
+    }
+
     public function complete()
     {
         $this->setAttribute('completed_at', now())->save();

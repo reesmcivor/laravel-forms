@@ -42,6 +42,10 @@ class FormEntryController extends Controller
 
     public function show(Request $request, FormEntry $formEntry)
     {
+        if($formEntry->isComplete()) {
+            return redirect()->route('form-entry.thank-you', $formEntry)
+                ->with('info', 'This form has already been completed.');
+        }
         return view('forms::form-entry.show', [
             'formEntry' => $formEntry,
         ]);
