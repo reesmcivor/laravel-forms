@@ -64,17 +64,13 @@ class FormEntry extends Model
     {
         $fieldTypes = config('forms.field.types');
         $groupsByForm = $this->form->groups->pluck('id', 'id')->toArray();
-        $questions = QuestionGroup::where('group_id', $groupsByForm)->get()->pluck('question_id', 'question_id')->toArray();
-        Question::whereIn('id', $questions)->get()->each(function($question) use ($values, $fieldTypes) {
+        $questionIds = QuestionGroup::whereIn('group_id', $groupsByForm)->get()->pluck('question_id', 'question_id')->toArray();
+        $questions = Question::whereIn('id', $questionIds)->get();
+
+        $questions->each(function($question) use ($values, $fieldTypes) {
             if(isset($values[$question->slug])) {
                 $fieldType = $fieldTypes[$question->type] ?? null;
-                if($question->slug == "trading_address") {
-                    //dd()
-                    //dd($fieldType);
-                    //dd($values[$question->slug]);
-                } else {
-                    app($fieldType)->saveAnswer($this, $question, $values[$question->slug]);
-                }
+                app($fieldType)->saveAnswer($this, $question, $values[$question->slug]);
             }
         });
     }

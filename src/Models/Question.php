@@ -19,7 +19,7 @@ class Question extends Model
         parent::boot();
         static::saving(function ($question) {
             $question->label = $question->label ?? $question->question;
-            $question->slug = $question->slug ?? Str::slug($question->label);
+            $question->slug = $question->slug ?? Str::slug($question->label, '_');
         });
     }
 
