@@ -22,7 +22,7 @@ class Form extends Model
     public function steps() : HasMany
     {
         return $this->hasMany(Group::class)
-            ->where('group_id', 0);
+            ->whereNull('group_id');
     }
 
     public function groups() : HasMany
