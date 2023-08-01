@@ -1,8 +1,12 @@
-<div class="grid grid-cols-2">
+<div class="flex flex-wrap">
 
 
     @foreach($group->questions as $question)
-        <div class="{{ $question->type == "text" ? "col-span-2" : "" }} px-5 py-2">
+        <div class="{{ $question->class ?? "w-full" }} px-5 py-2">
+
+            <pre>
+                <?php print_r($question); ?>
+            </pre>
 
             @if($question->description)
                 <p class="text-sm text-gray-500">{!! $question->description !!}</p>
