@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ReesMcIvor\Forms\Database\Factories\FormEntryFactory;
+use App\Models\User;
 
 class FormEntry extends Model
 {
@@ -20,6 +21,11 @@ class FormEntry extends Model
     public function form()
     {
         return $this->belongsTo(Form::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function scopeMine($query)

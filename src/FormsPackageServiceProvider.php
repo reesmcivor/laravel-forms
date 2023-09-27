@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use ReesMcIvor\Forms\Http\LiveWire\Question\Text;
+use ReesMcIvor\Forms\View\Components\Completed;
 use ReesMcIvor\Forms\View\Components\Stepped;
 
 class FormsPackageServiceProvider extends ServiceProvider
@@ -30,7 +31,8 @@ class FormsPackageServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/routes/tenant.php');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'forms');
         $this->loadViewComponentsAs('forms', [
-            Stepped::class
+            Stepped::class,
+            Completed::class
         ]);
 
         Livewire::component('forms.form', \ReesMcIvor\Forms\Http\Livewire\Form::class);

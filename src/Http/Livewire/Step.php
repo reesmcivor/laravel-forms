@@ -8,6 +8,7 @@ use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Group;
 use ReesMcIvor\Forms\Models\Question;
 use ReesMcIvor\Forms\Models\QuestionAnswer;
+use ReesMcIvor\Forms\Service\FormService;
 
 class Step extends Component
 {
@@ -21,7 +22,15 @@ class Step extends Component
     public Group|null $nextGroup;
     public int $currentGroupIndex = 0;
 
+    protected FormService $formService;
+
     public array $rules = ['question.*' => 'sometimes'];
+
+    public function __construct($id = null)
+    {
+        $this->formService = (new FormService);
+        parent::__construct($id);
+    }
 
     public function mount(FormEntry $formEntry, Collection $groups)
     {
@@ -30,7 +39,7 @@ class Step extends Component
         $this->group = $groups->get($this->currentGroupIndex);
         $this->previousGroup = $groups->get($this->currentGroupIndex - 1);
         $this->nextGroup = $groups->get($this->currentGroupIndex + 1);
-        $this->question = $this->getRecursiveQuestionAnswers( $this->group );
+        $this->question = $this->formService->getRecursiveQuestionAnswers($formEntry, $this->group );
         $this->rules = $this->getRulesFromQuestions( $this->group );
     }
 
@@ -110,35 +119,7 @@ class Step extends Component
         $this->currentGroupIndex = $index;
         $this->group = $this->groups->get($this->currentGroupIndex);
         $this->rules = $this->getRulesFromQuestions( $this->group );
-        $this->question = $this->getRecursiveQuestionAnswers($this->group);
+        $this->formService->getRecursiveQuestionAnswers($this->formEntry, $this->group );
 
-    }
-
-    protected function getRecursiveQuestionAnswers( Group $group, &$answers = [] ) {
-
-        $answers += $this->getQuestionAnswers($group->questions)->toArray();
-
-        if($group->children->count()) {
-            foreach($group->children as $childGroup) {
-                $answers += $this->getRecursiveQuestionAnswers($childGroup, $answers);
-            }
-        }
-        return $answers;
-    }
-
-    protected function getQuestionAnswers( Collection $questions ) : Collection
-    {
-        return $questions->mapWithKeys(function(Question $question) {
-            switch($question->type) {
-                case "select":
-                    $answer = QuestionAnswer::where('form_entry_id', $this->formEntry->id)->where('question_id', $question->id)->first();
-                    return [$question->id => $answer?->answerable?->choice?->id];
-                default:
-                    $answer = QuestionAnswer::where('form_entry_id', $this->formEntry->id)->where('question_id', $question->id)->first();
-                    return [$question->id => $answer?->answerable?->answer];
-            }
-        })->reject(function($answer) {
-            return $answer == null;
-        });
     }
 }

@@ -5,6 +5,7 @@ namespace ReesMcIvor\Forms\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
+use ReesMcIvor\Forms\Events\FormEntryComplete;
 use ReesMcIvor\Forms\Models\Form;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Question;
@@ -43,6 +44,9 @@ class FormEntryController extends Controller
     public function show(Request $request, FormEntry $formEntry)
     {
         if($formEntry->isComplete()) {
+
+            event(new FormEntryComplete($formEntry));
+
             return redirect()->route('form-entry.thank-you', $formEntry)
                 ->with('info', 'This form has already been completed.');
         }

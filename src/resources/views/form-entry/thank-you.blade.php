@@ -1,5 +1,6 @@
 <x-account-layout>
-    <div class="">
+
+    <div class="container">
         <div class="max-w-7xl mx-auto py-10">
 
             <h1 class="text-2xl font-semibold text-gray-900">
