@@ -1,7 +1,13 @@
 <x-account-layout>
-    <div class="">
+    <div>
         <div class="max-w-7xl mx-auto py-10">
 
+
+            <?php if($logo = config('forms.logo')) : ?>
+                <div style="padding-bottom: 25px; ">
+                    <img src="<?php echo $logo; ?>" />
+                </div>
+            <?php endif; ?>
 
             <h1 class="text-2xl font-semibold text-gray-900">
                 {{ $formEntry->form->name }}

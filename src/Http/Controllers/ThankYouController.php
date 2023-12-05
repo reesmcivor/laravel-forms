@@ -4,6 +4,7 @@ namespace ReesMcIvor\Forms\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use ReesMcIvor\Forms\Events\FormEntryComplete;
 use ReesMcIvor\Forms\Models\FormEntry;
 
 class ThankYouController extends Controller

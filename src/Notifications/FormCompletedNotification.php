@@ -23,8 +23,9 @@ class FormCompletedNotification extends Notification
 
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)->view("forms::emails.completed", [
+        $mailMessage = (new MailMessage)->view("forms::emails.completed", [
             "formEntryHtml" => (string) (new Completed($this->formEntry))->render()
         ]);
+        return $mailMessage;
     }
 }

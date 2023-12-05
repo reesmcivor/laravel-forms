@@ -4,6 +4,7 @@ namespace ReesMcIvor\Forms\Http\Livewire;
 
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use ReesMcIvor\Forms\Events\FormEntryComplete;
 use ReesMcIvor\Forms\Models\FormEntry;
 use ReesMcIvor\Forms\Models\Group;
 use ReesMcIvor\Forms\Models\Question;
@@ -85,8 +86,8 @@ class Step extends Component
         }
         if($closeForm) {
             $this->formEntry->complete();
-            response()->redirectTo(route('form-entry.thank-you', $this->formEntry->id))
-                ->with('success', 'Form submitted successfully');
+            event(new FormEntryComplete($this->formEntry));
+            response()->redirectTo(route('form-entry.thank-you', $this->formEntry->id));
         }
     }
 

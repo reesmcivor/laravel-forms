@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'logo' => 'https://www.maxpack.co.uk/wp-content/themes/maxpack-retail/public/images/maxpack-logo.svg',
     'field' => [
         'types' => [
             'varchar' => ReesMcIvor\Forms\Models\AnswerTypes\VarcharAnswer::class,
